@@ -1,0 +1,226 @@
+{
+    "001": {
+        "title": "~Paradox~",
+        "text": "Life may not be what it seems ∞ Perhaps there are areas in your life that contain opposing truths ∞ When life brings you black and white options are you able to see the grey areas in between ∞ Is there a special situation that you need to look at that might need your ability to see opposing truths ∞ Finally, if so…can you be present in whatever truths you discover, while remaining centered and accepting of yourself ∞ Remember a Gentleness towards Self as you explore potentially uncomfortable yet necessary aspects of your current life situation ∞"
+    },
+    "002": {
+        "title": "~Love~",
+        "text": "Perhaps you need more love in your life ∞ It seems that the answer to that is nearly always a hearty YES! ∞ Of course, there are times when we have all spent time loving others without loving ourselves to the extent that we might need to ∞That being said, perhaps this is a time to consider aspects of your definition of love ∞ Does it suit you ∞ Is the Love you find in your current life situations emanating from you or others ∞ Does it flow, is it natural ∞ Search your soul and remember that you are LOVE ∞ Of course, a love and gentleness for yourself as you explore anything that might be uncomfortable is most helpful ∞"
+    },
+    "003": {
+        "title": "~Guidance~",
+        "text": "What guides you  ∞ Do you see messages in nature: birds, sky, trees, wind, etc  ∞ Do the songs you hear  on the radio or passages you read in a book resonate within you  ∞ It can be such an amazing experience to realize these signs and wonders and interpret them from our inner landscape to know if they’re true for us ∞ Are you able to feel an inner “yes, no, maybe, I’ll think about it”  while you interact with your life and your place in the world ∞ Compassion and sufficient time can be helpful while you discern inner guidance and discover how it resonates with your inner being ∞"
+    },
+    "004": {
+        "title": "~Reflection~",
+        "text": "Is there something that you need to see that is being reflected about you from another person, place, or situation ∞ Is someone figuratively holding a mirror for you to see something that you might not see or want to see ∞ Do you need time to consider a situation that you’ve been meaning to give more attention to ∞ Reflection can be an excellent tool for learning about Self as long as it doesn’t become a time to berate or criticize ourselves ∞ I hope that you’re able to find a quiet place within yourself for peace and reflection and patience as you uncover what your soul might need you to know ∞"
+    },
+    "005": {
+        "title": "~Acceptance~",
+        "text": "Are you able to accept situations, people, things in your life just the way they are ∞ Do you need to ∞ Is there something in your life that you’re not able to accept and, in fact, to do so is to go against yourself ∞ Are you able to accept and love yourself in this moment ∞ If necessary, are you ready and willing to find a place within yourself that’s inspired to act and make a shift in your life to move towards acceptance ∞ Remember to notice how you feel internally as you make your exploration ∞ If a change is evident, it’s helpful for there to be space within us for the change to occupy ∞ Visualization can be helpful ∞"
+    },
+    "006": {
+        "title": "~Ancestor~",
+        "text": "There are so many that have gone before you! ∞ Your direct lineage (blood and marriage) as well as our brothers and sisters of the plants, animals (land & sea) ∞ It might be helpful to take a few breaths right now, close your eyes and go deep within and ask what message they may have for you ∞ When you open your eyes, trust what message you receive ∞ If there isn’t anything at this time, trust that too ∞ Remember that they are loving you always and forever, surrounding you, holding you when you need them most ∞"
+    },
+    "007": {
+        "title": "~Enthusiasm~",
+        "text": "Are you excited about the things that are happening in your life ∞ Where is your energy being pulled ∞ What do you feel moved to do next in your life ∞ Consider if there are revelations from the Universe that are just under the surface of a current situation that you may not have even noticed the subtly of it ∞ When we experience enthusiasm we are full with God/Source while we are engaged in the situation/activity ∞ Notice what enthusiasm feels like for you ∞ Getting in touch with our breath can help us get in touch with the touch of Enthusiasm ∞ Enjoy!"
+    },
+    "008": {
+        "title": "~Enjoyment~",
+        "text": "Where is your joy at this time ∞ Do you experience enjoyment in your work ∞ Is there enjoyment in your relationships ∞  Are you enjoying being alive ∞ Perhaps if you picked this card, you’re needing to be reminded that life is more than a lot of work all the time ∞ We need JOY! ∞ Where is there joy within you ∞ Take a few breaths and go within yourself and discover ∞ Can’t be all work ∞ If there’s a lot of joy, then you get to feel grateful for it! ∞"
+    },
+    "009": {
+        "title": "~Abundance~",
+        "text": "The Universe has more than enough for its inhabitants ( plants and critters alike) ∞ Even though some humans report that there are shortages of many resources, it’s my understanding that this is untrue ∞ We are good stewards and a changing species that evolve with the changes of the Earth ∞ We adapt and  thrive, moving into a new way of living all the time ∞ Do you see the abundance in your life ∞ Are you able to grasp that there is more than enough ∞ That you are more than enough ∞ Do you allow abundance into your life ∞ Is there are place for it ∞ Take a moment to breathe in the abundance of the Universe and sense the infinite possibilities ∞"
+    },
+    "010": {
+        "title": "~Inspired Action~",
+        "text": "When we are in alignment with our higher selves, we have the ability to have our actions inspired from that consciousness ∞ As we know ourselves to be connected to every sentient being, our inspired actions are helpful, loving and compassionate by nature ∞ Is there an area that needs Inspired Action ∞ Do you need to get in touch with your inner self so that Inspired Action can move into the forefront so that you may see it and act accordingly ∞ Take a moment to imagine areas where you need to have Inspired Action, when you’re centered in Yourself-What does the action look , feel, sound, taste, and smell like…locate the wisdom in it ∞"
+    },
+    "011": {
+        "title": "~Believe~",
+        "text": "The thoughts that we play over and over in our heads become our beliefs ∞ Naturally, there are many beliefs we’re unaware we hold until they come right in front of us and challenge the core of our being ∞ What do you believe in ∞ What are the thoughts that you play in your mind over and over again and do they resonate with you ∞ It’s my understanding that when we begin to believe in something it will happen ∞ Even things we might not want ∞ Check inside yourself to see if what you believe matches your outer life and that they are points of connection to the Universe and its inhabitant’s ∞"
+    },
+    "012": {
+        "title": "~Gratitude~",
+        "text": "What do you appreciate ∞ Whom do you appreciate ∞ How do you appreciate yourself and others ∞ What are the specific activities that exemplify your appreciation of yourself and others ∞ To the Earth ∞ To the Moon ∞ The Stars ∞ Look how your Gratefulness to be Alive is expanding before your eyes! ∞ When we’re in a state of gratitude it’s impossible to be critical or judgmental ∞ Breathe in the sense of Gratitude ∞ Feel it in your body, from the top of your lovely  head to the tip of your amazing toes---expanding out of you connecting you with the Universe ∞ Filling you with Love ∞"
+    },
+    "013": {
+        "title": "~Sacred~",
+        "text": "I wonder if there will ever be a time when we will not need the word Sacred because the Earth and her Lings will experience everything as Sacred all of the time and we won’t need to be reminded ∞ How do you remember that everything is Sacred ∞ Do you show reverence to the grandfather trees, the flowing streams ∞ What about  the seemingly rude person that cut you off in traffic ∞ The clothes you wear, the objects in your dwelling, YOU, do you honor yourself—all can be handled with care, Love and a gentleness of Heart  ∞ Please take a moment to remember the Sacredness in the experience of life ∞"
+    },
+    "014": {
+        "title": "~Healing~",
+        "text": "Is your body, mind or soul in need of any healing ∞ Does our Earth around you need some attention ∞ What are the ways in your life that you use to help you heal yourself, the Earth, your relationships ∞ Does nature work for you ∞ A chat with a dear friend to vent or mend ∞ Meditation ∞ Visualization ∞ Gratitude that the healing has begun ∞ Acts of appreciation towards self and others ∞ Healing, Loving, white light surrounding you ∞ Whatever may be in need of healing, know that the healing energy of the Earth/God/Spirit is always accessible to you at every moment and in any realm  ∞ With every breath you take, may it fill you with an experience of the Sacred Universe in which we live  ∞ "
+    },
+    "015": {
+        "title": "~Fun~",
+        "text": "Weeeee! ∞ Life can be fun! ∞  Are you having a fun time ∞  Do you find yourself being too busy taking care of your cave and the cave people you live with ∞  Do you need to lighten up a bit ∞  Do you have time to be playful and silly ∞  Are you taking something too seriously ∞  Perhaps you’re in need of a hearty Belly  type of laughing session ∞ When’s the last time you had a night of fun with friends  ∞ If you find that you have picked this card and you’re enjoying life and having enough fun ∞  Might want to check if you’re having too much of it, although I seriously doubt it ∞"
+    },
+    "016": {
+        "title": "~Light~",
+        "text": "Some believe that we are light beings ∞ Science seems to indicate that we are Energy that is somehow equivalent to light ∞ We know that we need the energy/light of the sun for our health and well being ∞ We know that when we’re connected with God/Spirit we can light up a room….Shoot! Maybe even the sky! ∞ What lights you up ∞ How do you bring your Light to our Universe that so needs/wants your love ∞ How do you connect with the Light of the Universe ∞ Do you need healing or help from this benevolent, loving Light ∞ Breathe it in! Be the Light of the World! Shine on Magnificent One! "
+    },
+    "017": {
+        "title": "~Cleanse~",
+        "text": "Sometimes it can be helpful to take the time to check our lodgings, bodies, minds, spirits, and transporters (car, bike, etc) ensuring they are clean and organized ∞ Have you been feeding and exercising your body for it to perform optimally ∞ Are your thoughts and actions congruent with who you know yourself to be ∞ Is your lodging and work space as tidy as you like it ∞ Take a moment to look around you (outside and in) and decide if you’re in need of any Cleansing ∞ If you’re not in need of a cleanse; then I imagine you’re feeling grateful! ∞"
+    },
+    "018": {
+        "title": "~Miracles~",
+        "text": "Some humans do not think that miracles even exist ∞ What is your definition of a miracle ∞ Does it have to be large to count ∞ Do you see small synchronicities as mere coincidence ∞ I bet if you look around you right this minute, you’ll see a miracle ∞ Sometimes we’re not prepared for or expecting a miracle and so we do not see them when they come ∞ Is there any way that you can expect Miracles and prepare a way for them ∞ Anything in particlular that needs a miracle in your life right now ∞ on our Earth ∞ Breathe in a space for miracles ∞ Expect the unexpected and you will be pleasantly surprised ∞"
+    },
+    "019": {
+        "title": "~Steadfast Grace~",
+        "text": "Grace can be a helpful quality to embody within relationship to Self, the Universe, and its inhabitants ∞ Some see it as a divine gift when we’re connected with God/Source ∞ We then experience grace as the understanding of just when to speak (how much or little, when to stop or start) every sincere syllable that’s uttered is dripping with love and kindness ∞ With grace at our side, we cherish ourselves and each other in a completely benevolent way that surpasses understanding and we stay fixed in it ∞  Are there areas where Grace can be a gift for you to share or to witness as an inspiration in another ∞ "
+    },
+    "020": {
+        "title": "~Soar~",
+        "text": "When’s the last time you felt as though you were soaring through your life unimpeded by the tasks of daily living ∞ When we soar, it seems as though we’re fully engaged, in the moment, present for whatever is coming our way ∞ Flowing through life like the wind ∞ As we soar above the Earth, we change our view thus altering our perspective ∞ Is there an area in your life that you need to take the leap and soar ∞ Do you see your situations from all the perspectives that you need to at this time ∞ Take a moment to look in and around you-- take a leap, change your perspective, SOAR ∞"
+    },
+    "021": {
+        "title": "~Receive~",
+        "text": "Often it’s easy for us to give and it can be more difficult to receive ∞ Is there a place in you where you’re able to receive gifts from others ∞ When we accept a gift from another we give them the joy of giving to us ∞ If we can do this with an authentic joy filled heart the outcome is even more profound ∞ Also, if we are given a gift that we’re not able to receive authentically because we know we don’t want it, then it can be helpful to consider the consequence for ourselves if we act out of our character ∞ What are the desires/gifts that you’ve formed for yourself and the Universe ∞ Is a space unfolding in your heart for those to be realized ∞ "
+    },
+    "023": {
+        "title": "~Allow~",
+        "text": "Allowing is similar in nature to receiving; however, it seems to have more to do with our actions before receiving something  ∞ Does your energy match the energy of what you desire in your life, thus creating a space for its receptivity ∞ Are there any obstacles that you need to manage before what you’ve asked for can be let into you ∞ Are there people in your life that you’ve allowed in who aren’t resonant with your core being ∞ Are there places that you go that you’ve allowed yourself to attend because you were afraid to hurt someone by saying no ∞ Peer into your soul and discover where you need to allow or disallow a person, place, situation---thus bringing yourself back to congruence ∞"
+    },
+    "024": {
+        "title": "~Impeccable~",
+        "text": "Being Impeccable as I understand it, has more to do with the direct experience that we did our best and that it was good enough ∞ There won’t be any critical lingering thoughts such as,   “ Uh, a bit lazy there; better try harder next time; oh well-it's over now” ∞ Also inherent in impeccability is our trusted 'word', even when/if it might be difficult for us to stay  the course ∞ We also give ourselves permission to change our mind if need be in order to maintain our impeccability  ∞ Are you impeccable with your words, action, and thoughts ∞ Are there any ways in which change is needed to bring yourself back into alignment with the core of your being ∞"
+    },
+    "025": {
+        "title": "~Stillness~",
+        "text": "Can you feel the stillness all around you ∞ Are you aware of the stillness in yourself ∞ Do you experience silence in nature ∞ Tranquility in a group of people ∞ Have you given yourself enough silence in your life to feel what it’s like to just BE ∞ Have you noticed the stillness in between words that you read or speak ∞ The unspeakable solace that emanates from Stillness in the world, out into the Cosmos ∞  Close your eyes for a moment, even if you’re in a crowded place---feel the Stillness of the space within in your chest and the space in the room or space outside that you occupy---extend yourself beyond this out into the Universe and breathe it in ∞"
+    },
+    "026": {
+        "title": "~Emotions~",
+        "text": "Our emotions can be our guiding references in life, letting us know if we’re resonant with ourselves ∞ When I’m feeling uncomfortable/unhelpful feelings (anger, sadness, depression, fear, etc) I’ve usually let something or someone move me off my course ∞ When I’m in the midst of these feelings I experience a sense of disconnectedness, separateness. Alone---cut off from the world, which is the exact opposite of my true nature ∞ We don’t need to judge them as good or bad - feelings can make us stop and become conscious, not react, and move through them towards inner congruence ∞ Take a breath and see if you’re experiencing any uncomfortable/unhelpful feelings ∞ Breathe through them ∞ "
+    },
+    "027": {
+        "title": "~Wisdom~",
+        "text": "Wisdom is often associated with age; however, we know that isn’t necessarily true ∞ Wisdom is a spiritual seeing ∞ Observing the truth and making a decision according to what fits for that situation, in that moment ∞ When we are in touch with our inner wisdom we’re able to ‘see’ with ease ∞ How do you get in touch with your inner wisdom ∞ Do you need it right now for a particular situation ∞ Can you see and appreciate how wisdom is growing in you now ∞ Is there anything you can do to facilitate her growth ∞ Do you need to use your wisdom eye to see a situation with more clarity ∞ Goddess Sofia, let me in ! ∞"
+    },
+    "028": {
+        "title": "~Compassion~",
+        "text": "What is your response when you see another’s suffering ∞ Are you able to be aware of it ∞ Aware of a deep call to relieve their suffering for them ∞ Aware of your own suffering and what brings relief ∞ Is it possible for you to offer yourself compassion when you need it ∞ Are there situations, people, places, animals, Earth, that need your compassion right now ∞ I’m reminded of the practice of breathing in the suffering of self/others and breathing out what will bring relief ∞ It can be helpful to practice this as a way of cultivating compassion ∞ Search inside and see if there’s a need ∞ Perhaps there’s even a person in your life at this time who needs compassion from you ∞"
+    },
+    "029": {
+        "title": "~Expectation~",
+        "text": "It seems that expectations are only helpful when we’re trying to manifest something into our lives ∞ Naturally, we need to expect that it will happen ∞ On the other hand, perhaps when we expect things to happen a particular way and they don’t, we’ve set ourselves up for the feeling of disappointment ∞ If we can notice the disappointment and move through it towards our true self (Love) we might be able to salvage the joy and surprise of a new unfolding right before our eyes ∞ What do you think ∞ Are there expectations in your life that are helpful ∞ Others that you need to modify or remove ∞ If not, then you might be experiencing appreciation right now ∞"
+    },
+    "030": {
+        "title": "~Music~",
+        "text": "Music is a well known way to experience divinity ∞ Do you hear the music around you, waiting to connect you with God/Source ∞ From the beating of your heart to the rustling winds ∞ Music is inviting you into her wave ∞ What is the music that moves you ∞ Who moves you to Music ∞ What moves you to Music ∞ Do you have enough Music in your life ∞ Music is known for her healing qualities too ∞ Are you able to use Music to help you or others heal ∞ Are you able to create new forms of music ∞ I hope Music will vibrate through you all of your days ∞"
+    },
+    "031": {
+        "title": "~Surrender~",
+        "text": "Letting ourselves move into the flow of a person, situation, thing, place, etc can be a relieving and even an intense experience ∞ When we surrender into the flow of life, resistance disappears ∞ Of course, it depends on the situation ∞ Have you allowed yourself to surrender to your deepest and truest self, trusting fully in what IS inside of you,  Your inner divining knowledge ∞ Have you given yourself over to something that is incongruent with your Inner Self  ∞ At times the act of surrendering can help move us into another place where we’re able to see things more clearly ∞ Do you need to surrender into something or pull back ∞ Check inside ∞"
+    },
+    "032": {
+        "title": "~Breath~",
+        "text": "What a simple and sustaining gift is our breath ∞ If ever we need only one thing to feel grateful for, this might be IT! ∞ Our breath also connects us to ourselves and each other, bringing us into the precious moment in which we reside - any moment  ∞ Have you noticed what it’s like when you take conscious breaths during a day (work, traffic, walking, etc ) ∞ What do you experience when you take a breath during a stressful situation ∞ Perhaps picking this card can be a gentle reminder to be present with your breathing or perhaps a reminder of the simple tool you currently utilize and might be able to share this simple gift with someone in your life ∞"
+    },
+    "033": {
+        "title": "~Confidence~",
+        "text": "Do you feel within the very marrow of your bones that what’s happening in your life is manageable and that you can do it ∞ Often confidence is associated with a belief in our ability to handle life’s situations ∞ I want to add a little twist…a belief in yourself connected to God/Source which propels you forward to experience exactly what you need to ∞ Infused with an inner knowing that you’re able to do so with this connection in place ∞ This view implies a unity of experience with our Source and ultimately others, as opposed to a singular focus on ourselves and what we can do ∞ Does this view work for you ∞ Search inside for your experience ∞ "
+    },
+    "034": {
+        "title": "~Relationship~",
+        "text": "Often times when we hear the word relationship, we think of intimate relationships with our significant others ∞ In this context I want to invite you to explore your relationship with yourself - moving out towards the world ∞ How have you been taking care of yourself ∞ Do you like your own company ∞ What are your relationships like with the closest person to you at this time ∞ Does it fit with your desired situation ∞ How are you relating to your friends, co-workers, etc  ∞ What’s your relationship like in the community you live in ∞ What’s your relationship like to the Earth and her creatures  ∞ If all’s well then you might feel grateful and if not, you have an opportunity to explore and shift  ∞ "
+    },
+    "035": {
+        "title": "~Nurture~",
+        "text": "When we think of nurturing we often think of it as a feminine quality of kindness and love, which is true ∞ I want to also look at it from the standpoint of cultivation ∞ What we put our energy towards grows ∞ What and Whom are you cherishing these days ∞ Are you able to cherish and cultivate yourself to the extent that you want/need to ∞ Are you able to cultivate your spiritual awareness ∞ Are you nurturing the friendships that you want to keep in your life ∞ Are you cultivating the activities you want in your life ∞ If these are all true, then you may feel grateful, if not - explore and make a change ∞"
+    },
+    "036": {
+        "title": "~Nature~",
+        "text": "Spiritual texts and nature enthusiasts recognize a certain reverence for nature ∞ It seems that it’s easier to experience God/Source when we’re in the presence of a massive Redwood tree ∞ As it towers over us, we’re reminded of how small we are, yet perfectly connected and vital to the planet  ∞ Are you able to spend as much time as you want to in nature ∞ If not, do you have access to or have you created places that have plants that you can spend time with ∞ It’s difficult to know exactly what’s innate in us - except that we’re connected to everything in the Universe in a loving and sacred way ∞ "
+    },
+    "037": {
+        "title": "~Peace~",
+        "text": "It seems that most people desire peace in their lives ∞ Although, this isn’t always quite evident when we look around at what transpires in the world ∞ It seems that part of peace is certainly linked to what we cultivate in life ∞ Violence begets more violence and peace, more peace ∞ Whatever our energy is a match for, that’s what will come our way ∞ It seems that we can experience the underlying peace in each moment as we bring our awareness to the moment ∞ That being said, are you currently experiencing the peace that you want in yourself, your relationships, in the world ∞ Sometimes even the lack of peace in our lives can bring about an inspired action ∞"
+    },
+    "038": {
+        "title": "~Joy~",
+        "text": "What brings you Joy  ∞Joy is always around us is in nearly every moment, although it might not always be clearly noticeable ∞ I love to watch babies and small toddlers always in search for  more Joy ∞ Watching them can be a great reminder how we too can keep looking for the Joy in life ∞ Especially in the moments when it appears we have a challenge in our life and we find a moment of Joy - it can transform the moment  ∞ If there are no babies around to teach you, then maybe this might just be an opportunity to observe the ways in which you find Joy ∞ If you have a lot and enough Joy in your life, well then - there’s a feeling of gratitude again for it! ∞"
+    },
+    "039": {
+        "title": "~Desire~",
+        "text": "Many religious texts will teach us that we need to push away our desires ∞ What if God/Source uses our desires to help guide us in the direction we need to go ∞ When people are connected to and  in alignment with their source then their desires will reflect that connection (towards love) ∞ In contrast, if there isn’t a connection, then our desires reflect another truth (violence, war, etc) ∞ Can you see how your desires (when you’re connected) guide you towards your calling in the world ∞ Are you able and/or willing to consider accepting the desires you feel as a gift and direction from Source ∞ Consider exploring  your desires and their meaning to you ∞"
+    },
+    "040": {
+        "title": "~Truth~",
+        "text": "It seems that truths in life continue to change moment by moment ∞ Perhaps I’m only certain of this: We are Source Energy and Loving action (when connected) emanates from that Source ∞ It seems that when we see our life situations for what they are in the moment then any action we make can be inspired by that truth and come from a place of love ∞ We may obtain and absorb new information that will change how we observe truth in our life situations ∞ Perhaps with  this new knowledge we  hold more steadfastly to what we know or we’re left with a new way of seeing ∞  What’s your opinion ∞ Is there a Universal Truth for all to follow ∞ Is there a personal truth ∞ What is true for you ∞"
+    },
+    "041": {
+        "title": "~Happiness~",
+        "text": "Is your happiness internal, emanating outward or is it  dependent on what situations/people/places come into your life ∞ When your happiness comes from within, you can insert happiness in nearly all places with ease ∞ If you rely on what is in our environment then you may often be disappointed ∞ In addition we give the world a big responsibility when we look for happiness there ∞ Where is your happiness right now ∞ Where do you feel it in your body ∞ If you’re happy and you know how happiness works for you, well then I imagine this might be something to offer some gratitude for ∞"
+    },
+    "042": {
+        "title": "~Passion~",
+        "text": "It seems that following our passion without abandon can be wonderful most of the time ∞ That being said, when we have a passion to stay up all night reading a book or something else, we might have a tired body to contend with in the morning ∞ We might want to consider using discernment with regard to our passions before we throw all of our cares to the wind ∞ What are the things in life that you absolutely Love! ∞ Are you able to let yourself follow them ∞ Do you need to follow them ∞ Does the timing work for you ∞ Is it necessary for you to pull back ∞Take a few moments to explore ∞"
+    },
+    "043": {
+        "title": "~Cosmos~",
+        "text": "We come from the stars! ∞ We know that this isn’t just science fiction anymore ∞ For thousands of years we humans have been gazing at the stars ∞ What do we seek ∞ Are we reminded of the infinite energy and connection that we came from ∞ Are we reminded of the infinite possibilities that exist in the Universe ∞ Do we bear witness to how infinitesimal we are, yet connected to the enormity of that which we gaze ∞ Have you taken the time lately to fix your eyes unto the Heavens and dream a little, BE a little more ALIVE ∞ If you have, well then you’re likely getting excited right about now ∞"
+    },
+    "044": {
+        "title": "~Path~",
+        "text": "I’d like to invite you to explore the way you live, in a broad sense  ∞ Do you see your true place in the cosmic process of thoughts, time, awareness, desire, actions, feelings, space, etc  ∞  Are you able to live within your chosen path ∞ Did you chose this path or was it chosen for you ∞ Do you feel in alignment with the harmonious functions of the larger path of the Universe ∞ Is there a sense of balance as your alignment with your path is realized ∞ As we stay within the truth of the path we follow, we open up a pathway for divinity to continuously flow through us ∞ We don’t relax into the security of the path, rather we relax into the impermanence of life and embrace the changing nature of it ∞"
+    },
+    "045": {
+        "title": "~Community~",
+        "text": "We all participate in communities (family, work, friends, religious, etc.) ∞ What does the idea of Community mean to you ∞ Do you understand your place in your Communities ∞ What are qualities in your Communities that are important to you ∞ If you’re unable to see one, are you able to make a shift that will be helpful ∞ Do you have a chosen Community that you feel supported by ∞ If not, are you able to create community (sometimes in unexpected places) ∞ If your Communities are all that you want them to be, then perhaps this is an opportunity to express that feeling, if not-then there might be room to shift ∞"
+    },
+    "046": {
+        "title": "~Awareness~",
+        "text": "Sometimes we just Wake Up instantly in life and other times people do so through increased awareness ∞ Once I become aware of a situation, I can see it for what it is and make new decisions if necessary ∞ What small/ large things do you find yourself noticing lately ∞ Is there anything lying just beneath the surface that needs to moved into your conscious awareness ∞ I invite you to take a few moments to check in with your awareness right now ∞  If you’re finding this difficult, start slowly with bringing your attention to the sensations in your body-moving out into your surroundings, finally, house, neighborhood, city, country, Universe ∞"
+    },
+    "047": {
+        "title": "~Infinity~",
+        "text": "We are infinite beings of light and love ∞ It seems that there aren’t any words to describe what it’s like to be in touch with this inestimable nature ∞ Experiencing death may be one way we can understand this eternal nature ∞ Then of course, we’re gone, still with no words to describe it ∞ Have you had an opportunity to connect to the vastness of Infinity lately ∞ Is there a freedom there ∞ A sense of relief ∞  What’s it like for you to know that you’re part of infinity ∞"
+    },
+    "048": {
+        "title": "~Source/God~",
+        "text": "Some people say that  Source(energy) guides our lives and we just show up to participate ∞  What if we are co-creators with our Source ∞ This Source is in us and we are it, simultaneously ∞ Some people experience  an enormous sense of freedom in this ∞ If we choose this path, we also have an enormous responsibility because we aren’t victims of our life circumstances any longer ∞ We have to become self initiated humans and do our part in our lives, the lives of others, and our world  ∞   Do you experience God within you ∞  If so, what is it like ∞  Are you able to see Source in your daily encounters with people, places, things, animals, etc ∞"
+    },
+    "049": {
+        "title": "~Hope~",
+        "text": "Some recognize hope as something that robs us of the present moment ∞ When we give up hope, we can stay present in the moment and experience compassion as we stay with the situation exactly the way that it I ∞ We are then available for the joy that’s underneath all of it ∞ We know that things will change, trusting this will happen  we can embrace the certainty of impermanence ∞ Hope can also be the recognition that we have a desire for a change and a dream for our future ∞ Are these views helpful to you ∞ Do you need to redefine hope in another way ∞ I invite you to explore these ideas to determine what is congruent for you ∞"
+    },
+    "050": {
+        "title": "~Courage~",
+        "text": "There are times when we summon our reservoir of courage to manage a seemingly difficult task/situation ∞ There are times where it takes even more courage to stand in the face of a situation that appears to you and others  to require immediate action and wait for a moment until you arrive at  certainty inside yourself ∞ Also, there might be a time when we change our minds and we will need to beckon a lot of courage to act it out, especially where other people are affected and may disagree with you ∞ Even other times where we need the courage to stay the course, even though we’re mostly ready to shift ∞ Are there areas in your life that require some of your courage, to change, keep it the same ∞ I invite you to explore ∞"
+    },
+    "051": {
+        "title": "~Need~",
+        "text": "Are you aware of the difference between what you need and what you want ∞ Sometimes needs get disguised as shame when we think that we “should” do a particular thing and call it a need ∞ There are times when our wants and our needs seem indistinguishable ∞ It’s in the those quiet moments that we can take the time to allow ourselves to understand what necessitates our action and move into that place ∞ Is there anything right now that you discern needs your attention ∞ Are you managing all  of all your needs effectively ∞"
+    },
+    "052": {
+        "title": "~Contemplation~",
+        "text": "Taking time for contemplation can be helpful in numerous areas of our lives ∞ We can spend time with a particular passage and contemplate a meaning ∞ There might be situations where we need additional time to consider how we need to proceed ∞ Introspection comes in many forms ∞ Is there anything in your life right now that will benefit from further contemplation before action ∞  Are there any teachings from texts / people / animals /  metaphors that you might gain knowledge of through contemplation ∞ I invite you to take a moment and reflect ∞"
+    },
+    "053": {
+        "title": "~Meditation~",
+        "text": "When we think of meditation often what comes to mind are folks sitting around in a room cross legged on cushions with mudra expressive hands ∞ Meditations can take on many forms ∞ We can be consciously meditative (by adding conscious breathing) in our walking, in eating, in our driving, in our love making, in our cooking, etc ∞  If you picked this card perhaps it’s an invitation to move some of your life into a meditative practice ∞   We start where we’re at ∞  A meditation practice can encompass every area of our lives ∞  What does your practice look like and are you pleased with it ∞"
+    },
+    "054": {
+        "title": "~Discernment~",
+        "text": "I understand discernment as making a conclusion in our life that requires us to question life from the our God-like nature point of view  as opposed to settling simply with a judgment or criticism ∞  When we judge or criticize others or a situation we are left feeling separate, alone, and disconnected ∞ Whereas when we actively discern we may be uncomfortable with our conclusion; however, we come away feeling connected and alive again ∞  Are there situations in your life that require an active discernment on your part ∞  If you aren’t finding any, then perhaps this is a situation for gratitude ∞"
+    },
+    "055": {
+        "title": "~Full Moon~",
+        "text": "In the fullness of the moon, we can be reminded of the overall content and patterns of our lives ∞ We can use it as an opportunity to observe these  patterns and contents, discerning if they are congruent within us ∞ Are we full of Love ∞ Do we fill our lives with too many mundane activities ∞ Do we need more fun ∞ Do we have Loving relationships ∞ Do we fill our lives with helpful/loving acts of service for others /ourselves ∞  Are we full of gratitude for the teachers (people, movies, plants, books, technology, etc) in our lives ∞  Take a moment to explore, keep in mind what it feels like in your body as you do so ∞ Often we see what we need ∞"
+    },
+    "056": {
+        "title": "~Crescent Moon~",
+        "text": "There are times when we feel less than full, less than courageous and it’s during those times when we might need additional support to make it through ∞ Who are the supportive people in your life ∞ Is there anything that you do for yourself that gives you the extra support you need (walk, more/less sleep, quiet time, fun etc) ∞ Are there particular foods that sustain you ∞ Is there an uplifting place you can visit ∞ Are there situations that you need to take more time with to see them clearly ∞ Look inside and see if  there’s anything you need ∞ If not, then this is a reminder to examine your support ∞ In the event that you might need them, you can take comfort knowing they’re there ∞"
+    },
+    "022": {
+        "title": "~Boundaries~",
+        "text": "When we set a boundary we are opening lines of communication by definitively distinguishing for others what we’re comfortable with ∞ When we set a barrier, we avoid communication and ignore what’s happening ∞ This barrier is often accompanied by an unhelpful judgment of the person or situation ∞ “I’m leaving because you’re such a jerk” we yell ∞ We might consider this “I want to leave you because I won’t be treated in the way that you continue to insist on and I’d consider staying if you’re willing to explore alternative options with me” ∞  Notice the difference between these two; I invite you to consider if their application might be helpful in your current life situations ∞"
+    }
+}
