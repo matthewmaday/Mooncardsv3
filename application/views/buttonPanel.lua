@@ -71,8 +71,8 @@ function LoadButtons:new(params)
 		self.images.blackRect = display.newRect(screen, 0,0,self.myHeight,options.height)
 		self.images.blackRect:setReferencePoint( display.TopLeftReferencePoint )
 		self.images.blackRect.x,self.images.blackRect.y     = 0,0
-		self.images.blackRect:setFillColor(0,0,0)
-	
+		self.images.blackRect:setFillColor(32,98,117)
+		
 		self:insert(self.images.blackRect)
 
 
@@ -82,17 +82,17 @@ function LoadButtons:new(params)
 		-- about button
 		self.images[#self.images+1] = {about=nil}
 		self.images.about  = self:getButton(self.images.buttonSheet, "about", 1,4,options.width,options.height)
-		self.images.about.x, self.images.about.y = options.width*.5, options.height*.5
+		self.images.about.x, self.images.about.y = self.centerY-options.width, options.height*.5
 
 		-- share button
 		self.images[#self.images+1] = {share=nil}
 		self.images.share  = self:getButton(self.images.buttonSheet, "share", 2,5,options.width,options.height)
-		self.images.share.x, self.images.share.y = options.width*1.5, options.height*.5
+		self.images.share.x, self.images.share.y = self.centerY, options.height*.5
 
 		-- refresh button
 		self.images[#self.images+1] = {refresh=nil}
 		self.images.refresh  = self:getButton(self.images.buttonSheet, "refresh", 3,6,options.width,options.height)
-		self.images.refresh.x, self.images.refresh.y = options.width*2.5, options.height*.5
+		self.images.refresh.x, self.images.refresh.y = self.centerY+options.width, options.height*.5
 
 		
 		--transition.to( screen, { x=(display.contentWidth-screen.myWidth)*.5,y=0, time=400, delay=0,alpha=1.0,transition=easing.outQuad})
