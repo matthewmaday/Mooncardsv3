@@ -1,17 +1,18 @@
--- General Card View
+-- Scroll View
 
 -- Moon cards version 2
 -- Development by Matthew Maday
 -- DBA - Weekend Warrior Collective
 -- a 100% not-for-profit developer collective
 
-LoadCard = {}
+LoadScroll = {}
 
 --------------------------------------------------------------------------------------
 -- External Libraries
 --------------------------------------------------------------------------------------
+local widget       = require "widget"
 
-function LoadCard:new(params)
+function LoadScroll:new(params)
 
 	local screen   = display.newGroup()
 	
@@ -58,38 +59,44 @@ function LoadCard:new(params)
 		end
 
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
-
-		-- insert so that we have accurate screen width and height measurements
-
-		-- create the card display group
-		self.groups[#self.groups+1] = {card=nil}
-		self.groups.card = display.newGroup()
-		screen:insert(self.groups.card)
-
-	  	-- Insert the card background
-	  	self.images[#self.images+1] = {cardBkg=nil}
-		self.images.cardBkg = display.newImageRect(self.groups.card, "content/images/card_card.png", 320, 428)
-		self.groups.card:insert( self.images.cardBkg )
-
-		-- banner
-		self.images[#self.images+1] = {bannerBkg=nil}
-		self.images.bannerBkg = display.newImageRect("content/images/card_banner.png", 340, 82) 
-		self.groups.card:insert(self.images.bannerBkg)
-
-		-- banner text
-		self.texts[#self.texts+1] = {banner=nil}
-		self.texts.banner = display.newText( self.groups.card, gRecord.title,  self.groups.card.width*.5, -20, "Papyrus", 16 )
-		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
-		self.groups.card:insert(self.texts.banner)
-
-		-- set initial positions
-		screen.x, screen.y = self.centerX, self.centerY-20
-		self.images.bannerBkg.x, self.images.bannerBkg.y = 0,-150
-		self.texts.banner.x, self.texts.banner.y = 0,-155
-
-		screen:alignContent()
+		self.groups[#self.groups+1] = {body=nil}
+		
+		screen:updateText()
 		
 		self.state = "idle"
+	end
+	--------
+	function screen:updateText()
+
+		-- remove old instance of the text (fixes formatting issues)
+		if screen.textContent ~= nil then
+			screen.textContent:removeSelf()
+			self.groups.body:removeSelf()
+			screen.textContent = nil
+			self.groups.body = nil
+		end
+
+		self.groups.body = widget.newScrollView
+		{left=0,top=0,width=280,height=277,scrollWidth=400,scrollHeight=277,bottomPadding=0,hideBackground=true,id="onBottom",
+		horizontalScrollDisabled = true,verticalScrollDisabled = false,listener = scrollListener,}
+
+		self:insert( self.groups.body )
+
+		screen.textContent = display.newText( gRecord.text, 0, 0, 200, 0, "Papyrus", 16)
+		screen.textContent:setTextColor(0,0,0) 
+		
+		screen.x, screen.y = gComponents.support[2].x - screen.textContent.width*.5, 
+		gComponents.support[2].y-(gComponents.support[2].height*.25)
+		
+		self.groups.body :insert( self.textContent )
+
+		-- insert the mask that sits over the text within the card
+		local mask = graphics.newMask( "content/images/mask.png" )
+		self.groups.body:setMask( mask )
+		self.groups.body.maskX,self.groups.body.maskY = 100, 100
+
+		screen:alignContent()
+
 	end
 	--------
 	function screen:show(time)
@@ -128,13 +135,13 @@ function LoadCard:new(params)
 	function screen:destory()
 
 		local pEnd = #self.images
-		
-		screen.groups.card:removeSelf()
-		screen.images.cardBkg:removeSelf()
 
-		screen.texts.body = nil
-		screen.groups.card = nil
-		screen.images.cardBkg = nil
+		self.groups.body:removeSelf()
+		self.textContent:removeSelf()
+
+		self.groups.body = nil
+		self.textContent = nil
+		widget = nil
 
 		screen:removeSelf()
 		screen = nil
@@ -153,8 +160,6 @@ function LoadCard:new(params)
 		end
 		})
 
-		goToScene(4)
-
 	end	
 	--------
 	function screen:timeout()
@@ -163,52 +168,46 @@ function LoadCard:new(params)
 	--------
 	function screen:alignContent()
 
-		local pBanner    = self.images.bannerBkg
-		local pCard      = self.groups.card
-		local pBannerTxt = self.texts.banner
-		local cardHeight = self.images.cardBkg.height
-		local cardWidth  = self.images.cardBkg.width
-
 		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
 
-			-- card
-			pCard.xScale,pCard.yScale = 1.0,1.0
-			tweenObject(screen, screen.x,self.centerX, screen.y, self.centerY-20,.5, 1)
+			self.xScale,self.yScale = 1.0,1.0
 
-			-- banner
-			tweenObject(pBanner, pBanner.x,0, -220, -150,1, 1)
+			local locX = self.centerX - screen.textContent.width*.5
+			local locY = self.centerY-(428*.3)
 			
-			-- banner text
-			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
+			tweenObject(screen, screen.x,locX, locY-40,locY,.5, 1)
 
 		else
 
-			-- card
-			pCard.xScale,pCard.yScale = .75,.75
-			tweenObject(screen, screen.x,self.centerY*.5, screen.y, self.centerX,.5, 1)
+			self.xScale,self.yScale = .75,.75
+
+			local locX = self.centerY*.6 - screen.textContent.width*.5
+			local locY = self.centerX - (321*.25) -- THE 321 is 75% of height of the card. OOP executes differently and I just added it manually
 			
-			-- banner
-			tweenObject(pBanner, pBanner.x,0, -220, -150,1, 1)
-
-			-- banner text
-			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
-
+			tweenObject(screen, screen.x,locX, locY-40,locY,.5, 1)
 		end
 
 	end
 	--------
-	function screen:refreshCard()
+	-- function screen:tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
 
-		selectRecord()
+	-- 	obj.x,obj.y,obj.alpha = startX,startY, startAlpha
 
-		self.texts.banner.text = gRecord.title
-		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
+	-- 	screen:cancelTween(obj)
 
-		gComponents.support[4]:updateText()
+	-- 	obj.tween = transition.to(obj, {time=600,x=endX, y=endY,alpha=endAlpha,transition=easing.outQuad,onComplete=function()
+	-- 		screen:cancelTween(obj)
+	-- 		end
+	-- 		})
 
-		screen.y = screen.y - 50
-		screen:alignContent()
-	end
+	-- end
+	-- --------
+	-- function screen:cancelTween(obj)
+	-- 	if obj.tween ~= nil then
+	-- 		transition.cancel(obj.tween)
+	-- 		obj.tween = nil
+	-- 	end
+	-- end
 
 
 	Runtime:addEventListener( "orientation", onOrientationChange )
@@ -218,4 +217,4 @@ function LoadCard:new(params)
 
 end
 
-return LoadCard
+return LoadScroll

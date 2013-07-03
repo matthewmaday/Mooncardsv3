@@ -1,17 +1,17 @@
--- General Card View
+-- About Panel View
 
 -- Moon cards version 2
 -- Development by Matthew Maday
 -- DBA - Weekend Warrior Collective
 -- a 100% not-for-profit developer collective
 
-LoadCard = {}
+LoadAbout = {}
 
 --------------------------------------------------------------------------------------
 -- External Libraries
 --------------------------------------------------------------------------------------
 
-function LoadCard:new(params)
+function LoadAbout:new(params)
 
 	local screen   = display.newGroup()
 	
@@ -35,10 +35,18 @@ function LoadCard:new(params)
 		else
 			local newAngle = delta-screen.rotation
 		end
-
-		tweenObject(screen, screen.x, (display.contentWidth-screen.myWidth)*.5, screen.y, 0, 1, 1)
+	
 		screen:alignContent()
 
+	end
+	--------
+	local function gowebsite(event)
+
+		if event.target == screen.texts.web then
+			if event.phase == "began" then
+				system.openURL("www.evergreentherapies.com")
+			end
+		end
 	end
 	--------
 	function screen:initialize(params, event)
@@ -59,36 +67,44 @@ function LoadCard:new(params)
 
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
 
-		-- insert so that we have accurate screen width and height measurements
-
 		-- create the card display group
-		self.groups[#self.groups+1] = {card=nil}
-		self.groups.card = display.newGroup()
-		screen:insert(self.groups.card)
+		self.groups[#self.groups+1] = {aboutCard=nil}
+		self.groups.aboutCard = display.newGroup()
+		screen:insert(self.groups.aboutCard)
 
 	  	-- Insert the card background
-	  	self.images[#self.images+1] = {cardBkg=nil}
-		self.images.cardBkg = display.newImageRect(self.groups.card, "content/images/card_card.png", 320, 428)
-		self.groups.card:insert( self.images.cardBkg )
+	  	self.images[#self.images+1] = {background=nil}
+		self.images.background = display.newImageRect(self.groups.aboutCard, "content/images/popup.png", 299, 191)
+		screen:insert( self.images.background )
 
-		-- banner
-		self.images[#self.images+1] = {bannerBkg=nil}
-		self.images.bannerBkg = display.newImageRect("content/images/card_banner.png", 340, 82) 
-		self.groups.card:insert(self.images.bannerBkg)
+		self.images.background:addEventListener("touch", function(event)
+				if event.target == self.images.background then
+					screen:transitionAwayFrom()
+				end
+			end
+			)
 
-		-- banner text
-		self.texts[#self.texts+1] = {banner=nil}
-		self.texts.banner = display.newText( self.groups.card, gRecord.title,  self.groups.card.width*.5, -20, "Papyrus", 16 )
-		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
-		self.groups.card:insert(self.texts.banner)
+		 -- popup text
+		self.texts[#self.texts+1] = {bio=nil}
+		self.texts.bio = display.newText( screen, gBio.bio, 0,  0, 240,200,"Papyrus", 10 )
+		self.texts.bio:setTextColor(70, 70, 70)
+		screen:insert( self.texts.bio )
 
-		-- set initial positions
-		screen.x, screen.y = self.centerX, self.centerY-20
-		self.images.bannerBkg.x, self.images.bannerBkg.y = 0,-150
-		self.texts.banner.x, self.texts.banner.y = 0,-155
+		 -- web address text
+		self.texts[#self.texts+1] = {web=nil}
+		self.texts.web = display.newText( screen, gBio.website, 0,  0, 240,14,"Papyrus", 10 )
+		self.texts.web:setTextColor(196, 94, 51)
+		screen:insert( self.texts.web )
 
-		screen:alignContent()
+		screen.texts.web:addEventListener("touch", gowebsite)
+
+		-- position content
+		screen.x, screen.y = self.centerX, self.centerY
+		self.texts.bio.x, self.texts.bio.y = 0, 30
+		self.texts.web.x, self.texts.web.y = 0, 30
 		
+		screen:alignContent()
+
 		self.state = "idle"
 	end
 	--------
@@ -129,15 +145,17 @@ function LoadCard:new(params)
 
 		local pEnd = #self.images
 		
-		screen.groups.card:removeSelf()
-		screen.images.cardBkg:removeSelf()
+		self.groups.aboutCard:removeSelf()
+		self.texts.bio:removeSelf()
+		self.texts.web:removeSelf()
 
-		screen.texts.body = nil
-		screen.groups.card = nil
-		screen.images.cardBkg = nil
+		self.groups.aboutCard = nil
+		self.texts.bio = nil
+		self.texts.web = nil
 
 		screen:removeSelf()
 		screen = nil
+		gComponents.support[5] = nil
 	end
 	--------
 	function screen:transitionAwayFrom()
@@ -153,7 +171,6 @@ function LoadCard:new(params)
 		end
 		})
 
-		goToScene(4)
 
 	end	
 	--------
@@ -163,52 +180,14 @@ function LoadCard:new(params)
 	--------
 	function screen:alignContent()
 
-		local pBanner    = self.images.bannerBkg
-		local pCard      = self.groups.card
-		local pBannerTxt = self.texts.banner
-		local cardHeight = self.images.cardBkg.height
-		local cardWidth  = self.images.cardBkg.width
-
 		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
-
-			-- card
-			pCard.xScale,pCard.yScale = 1.0,1.0
-			tweenObject(screen, screen.x,self.centerX, screen.y, self.centerY-20,.5, 1)
-
-			-- banner
-			tweenObject(pBanner, pBanner.x,0, -220, -150,1, 1)
-			
-			-- banner text
-			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
-
+			tweenObject(screen, screen.x, self.centerX, screen.y, self.centerY, 1, 1)
 		else
-
-			-- card
-			pCard.xScale,pCard.yScale = .75,.75
-			tweenObject(screen, screen.x,self.centerY*.5, screen.y, self.centerX,.5, 1)
-			
-			-- banner
-			tweenObject(pBanner, pBanner.x,0, -220, -150,1, 1)
-
-			-- banner text
-			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
-
+			tweenObject(screen, screen.x, self.centerY, screen.x, self.centerX, 1, 1)
 		end
 
 	end
 	--------
-	function screen:refreshCard()
-
-		selectRecord()
-
-		self.texts.banner.text = gRecord.title
-		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
-
-		gComponents.support[4]:updateText()
-
-		screen.y = screen.y - 50
-		screen:alignContent()
-	end
 
 
 	Runtime:addEventListener( "orientation", onOrientationChange )
@@ -218,4 +197,4 @@ function LoadCard:new(params)
 
 end
 
-return LoadCard
+return LoadAbout

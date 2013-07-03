@@ -94,8 +94,6 @@ function LoadButtons:new(params)
 		self.images.refresh  = self:getButton(self.images.buttonSheet, "refresh", 3,6,options.width,options.height)
 		self.images.refresh.x, self.images.refresh.y = self.centerY+options.width, options.height*.5
 
-		
-		--transition.to( screen, { x=(display.contentWidth-screen.myWidth)*.5,y=0, time=400, delay=0,alpha=1.0,transition=easing.outQuad})
 		screen:alignContent()
 		
 		self.state = "idle"
@@ -177,10 +175,10 @@ function LoadButtons:new(params)
 
 		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
 			screen.rotation = 0
-			screen:tweenObject(screen, self.centerX-screen.width*.5, self.centerX-screen.width*.5, self.myHeight-screen.height+40, self.myHeight-screen.height, 1, 1)
+			tweenObject(screen, self.centerX-screen.width*.5, self.centerX-screen.width*.5, self.myHeight-screen.height+40, self.myHeight-screen.height, 1, 1)
 		else
 			screen.rotation = -90
-			screen:tweenObject(screen, self.myHeight, self.myHeight-screen.height, self.centerX+screen.width*.5, self.centerX+screen.width*.5, 1, 1)
+			tweenObject(screen, self.myHeight, self.myHeight-screen.height, self.centerX+screen.width*.5, self.centerX+screen.width*.5, 1, 1)
 		end
 
 	end
@@ -205,53 +203,44 @@ function LoadButtons:new(params)
 		if event.target == self.images.about then 
 
 			if event.phase == "began" then
-				
-				self.images.about:setFrame(2)
-			elseif event.phase == "ended" then 
-				self.images.about:setFrame(1) 
+				if gComponents.support[5] ~= nil then return -1 end
+
+				loadAbout()
+				screen:buttonPress(self.images.about)
 			end
 		elseif event.target == self.images.share then 
 
 			if event.phase == "began" then
-
-				self.images.share:setFrame(2)
-			elseif event.phase == "ended" then 
-				self.images.share:setFrame(1) 
+				screen:buttonPress(self.images.share)
 			end
+
 		elseif event.target == self.images.refresh then 
+
 
 			if event.phase == "began" then
 				gComponents.support[2]:refreshCard()
-				self.images.refresh:setFrame(2)
-			elseif event.phase == "ended" then 
-				self.images.refresh:setFrame(1) 
+				screen:buttonPress(self.images.refresh)
 			end
+
 		end
 
 		return true
 	end
 	--------
-	function screen:tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
+	function screen:buttonPress(obj)
 
-		obj.x,obj.y,obj.alpha = startX,startY, startAlpha
+			obj:setFrame(2)
 
-		screen:cancelTween(obj)
-
-		obj.tween = transition.to(obj, {time=400,x=endX, y=endY,alpha=endAlpha,transition=easing.outQuad,onComplete=function()
-			screen:cancelTween(obj)
+			if obj.timer ~= nil then
+				timer.cancel(obj.timer)
 			end
-			})
+				
+			obj.timer = timer.performWithDelay( 200, function()
+				obj:setFrame(1)
+				obj.timer = nil
+			end)
 
 	end
-	--------
-	function screen:cancelTween(obj)
-		
-		if obj.tween ~= nil then
-			transition.cancel(obj.tween)
-			obj.tween = nil
-		end
-	end
-	--------
 
 	Runtime:addEventListener( "orientation", onOrientationChange )
 
