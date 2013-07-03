@@ -168,7 +168,7 @@ function LoadScroll:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
 
 			self.xScale,self.yScale = 1.0,1.0
 

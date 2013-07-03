@@ -95,13 +95,13 @@ function LoadAbout:new(params)
 
 		 -- popup text
 		self.texts[#self.texts+1] = {bio=nil}
-		self.texts.bio = display.newText( screen, gBio.bio, 0,  0, 240,200,"Papyrus", 13 )
+		self.texts.bio = display.newText( screen, gBio.bio, 0,  0, 240,200,"Papyrus", 11 )
 		self.texts.bio:setTextColor(70, 70, 70)
 		screen:insert( self.texts.bio )
 
 		 -- web address text
 		self.texts[#self.texts+1] = {web=nil}
-		self.texts.web = display.newText( screen, gBio.website, 0,  0, 240,30,"Papyrus", 16 )
+		self.texts.web = display.newText( screen, gBio.website, 0,  0, 240,30,"Papyrus", 14 )
 		self.texts.web:setTextColor(196, 94, 51)
 		screen:insert( self.texts.web )
 
@@ -110,7 +110,7 @@ function LoadAbout:new(params)
 		-- position content
 		screen.x, screen.y = self.centerX, self.centerY
 		self.texts.bio.x, self.texts.bio.y = 0, 30
-		self.texts.web.x, self.texts.web.y = 0, 68
+		self.texts.web.x, self.texts.web.y = 0, 66
 		
 		screen:alignContent()
 
@@ -192,7 +192,7 @@ function LoadAbout:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
 
 			tweenObject(screen, screen.x, self.centerX, screen.y, self.centerY, 1, 1)
 			self.images.lightbox.x,self.images.lightbox.y = -(self.myWidth*.5),-(self.myHeight*.5)-40

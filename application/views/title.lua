@@ -238,7 +238,7 @@ function LoadTitle:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
 			transition.to( self.images.title, { y=30, time=400, delay=0,transition=easing.outQuad})
 			transition.to( self.images.continue, { y=self.myHeight-30, time=400, delay=0,transition=easing.outQuad})
 			transition.to( self.images.sun, { y=self.centerY,  time=400, delay=0,transition=easing.outQuad})

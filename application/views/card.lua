@@ -87,6 +87,13 @@ function LoadCard:new(params)
 		self.images.bannerBkg.x, self.images.bannerBkg.y = 0,-150
 		self.texts.banner.x, self.texts.banner.y = 0,-155
 
+-- self.texts[#self.texts+1] = {test=nil}
+-- self.texts.test = display.newText( self.groups.card, system.orientation,  self.groups.card.width*.5, -20, "Papyrus", 16 )
+-- self.groups.card:insert(self.texts.test)
+-- self.texts.test.x, self.texts.test.y = 0,-100
+-- self.texts.test:setTextColor(0,0,0) 
+
+
 		screen:alignContent()
 		
 		self.state = "idle"
@@ -169,7 +176,9 @@ function LoadCard:new(params)
 		local cardHeight = self.images.cardBkg.height
 		local cardWidth  = self.images.cardBkg.width
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+		-- screen.texts.test.text = system.orientation
+
+		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
 
 			-- card
 			pCard.xScale,pCard.yScale = 1.0,1.0
