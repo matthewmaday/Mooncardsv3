@@ -211,12 +211,18 @@ function LoadButtons:new(params)
 		elseif event.target == self.images.share then 
 
 			if event.phase == "began" then
+				if gComponents.support[5] ~= nil then 
+					gComponents.support[5]:transitionAwayFrom()
+				end
+				
 				screen:buttonPress(self.images.share)
 			end
 
 		elseif event.target == self.images.refresh then 
 
-
+			if gComponents.support[5] ~= nil then 
+				gComponents.support[5]:transitionAwayFrom()
+			end
 			if event.phase == "began" then
 				gComponents.support[2]:refreshCard()
 				screen:buttonPress(self.images.refresh)

@@ -72,27 +72,36 @@ function LoadAbout:new(params)
 		self.groups.aboutCard = display.newGroup()
 		screen:insert(self.groups.aboutCard)
 
+		-- create black background
+		self.images[#self.images+1] = {lightbox=nil}
+		self.images.lightbox = display.newRect(screen, 0,0,self.myHeight,self.myHeight)
+		self.images.lightbox:setReferencePoint( display.TopLeftReferencePoint )
+		self.images.lightbox.x,self.images.lightbox.y,self.images.lightbox.alpha = -(self.myWidth*.5),-(self.myHeight*.5),.5
+		self.images.lightbox:setFillColor(0,0,0)
+
+		self.images.lightbox:addEventListener("touch", function(event)
+				if event.target == self.images.lightbox then
+					screen:transitionAwayFrom()
+				end
+			end
+		)
+
 	  	-- Insert the card background
 	  	self.images[#self.images+1] = {background=nil}
 		self.images.background = display.newImageRect(self.groups.aboutCard, "content/images/popup.png", 299, 191)
 		screen:insert( self.images.background )
 
-		self.images.background:addEventListener("touch", function(event)
-				if event.target == self.images.background then
-					screen:transitionAwayFrom()
-				end
-			end
-			)
+
 
 		 -- popup text
 		self.texts[#self.texts+1] = {bio=nil}
-		self.texts.bio = display.newText( screen, gBio.bio, 0,  0, 240,200,"Papyrus", 10 )
+		self.texts.bio = display.newText( screen, gBio.bio, 0,  0, 240,200,"Papyrus", 13 )
 		self.texts.bio:setTextColor(70, 70, 70)
 		screen:insert( self.texts.bio )
 
 		 -- web address text
 		self.texts[#self.texts+1] = {web=nil}
-		self.texts.web = display.newText( screen, gBio.website, 0,  0, 240,14,"Papyrus", 10 )
+		self.texts.web = display.newText( screen, gBio.website, 0,  0, 240,30,"Papyrus", 16 )
 		self.texts.web:setTextColor(196, 94, 51)
 		screen:insert( self.texts.web )
 
@@ -101,7 +110,7 @@ function LoadAbout:new(params)
 		-- position content
 		screen.x, screen.y = self.centerX, self.centerY
 		self.texts.bio.x, self.texts.bio.y = 0, 30
-		self.texts.web.x, self.texts.web.y = 0, 30
+		self.texts.web.x, self.texts.web.y = 0, 68
 		
 		screen:alignContent()
 
@@ -148,10 +157,14 @@ function LoadAbout:new(params)
 		self.groups.aboutCard:removeSelf()
 		self.texts.bio:removeSelf()
 		self.texts.web:removeSelf()
+		self.images.lightbox:removeSelf()
+		self.images.background:removeSelf()
 
 		self.groups.aboutCard = nil
 		self.texts.bio = nil
 		self.texts.web = nil
+		self.images.lightbox  = nil
+		self.images.background = nil
 
 		screen:removeSelf()
 		screen = nil
@@ -171,7 +184,6 @@ function LoadAbout:new(params)
 		end
 		})
 
-
 	end	
 	--------
 	function screen:timeout()
@@ -181,14 +193,18 @@ function LoadAbout:new(params)
 	function screen:alignContent()
 
 		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+
 			tweenObject(screen, screen.x, self.centerX, screen.y, self.centerY, 1, 1)
+			self.images.lightbox.x,self.images.lightbox.y = -(self.myWidth*.5),-(self.myHeight*.5)-40
+
 		else
+			local xLoc = -(self.centerY) - 38
+
 			tweenObject(screen, screen.x, self.centerY, screen.x, self.centerX, 1, 1)
+			self.images.lightbox.x,self.images.lightbox.y = xLoc,-(self.myWidth*.5)
 		end
 
 	end
-	--------
-
 
 	Runtime:addEventListener( "orientation", onOrientationChange )
 

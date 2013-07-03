@@ -161,28 +161,6 @@ function LoadBackground:new(params)
 
 
 	end
-	--------
-	-- function screen:tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
-
-	-- 	obj.x,obj.y,obj.alpha = startX,startY, startAlpha
-
-	-- 	screen:cancelTween(obj)
-
-	-- 	obj.tween = transition.to(obj, {time=400,x=endX, y=endY,alpha=endAlpha,transition=easing.outQuad,onComplete=function()
-	-- 		screen:cancelTween(obj)
-	-- 		end
-	-- 		})
-
-	-- end
-	-- --------
-	-- function screen:cancelTween(obj)
-		
-	-- 	if obj.tween ~= nil then
-	-- 		transition.cancel(obj.tween)
-	-- 		obj.tween = nil
-	-- 	end
-	-- end
-	--------
 
 	Runtime:addEventListener( "orientation", onOrientationChange )
 
