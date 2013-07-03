@@ -10,8 +10,11 @@ display.setStatusBar( display.HiddenStatusBar )
 --------------------------------------------------------------------------------------
 -- External Libraries
 --------------------------------------------------------------------------------------
+
 local fileio     = require ("library.core.fileio")
 local json       = require "json"
+local faceBook   = require ("library.core.easyFB")
+
 --------------------------------------------------------------------------------------
 -- variable declaritions
 --------------------------------------------------------------------------------------
@@ -29,6 +32,8 @@ gBio          = nil
 
 -- touchScreen(event)
 -- processScene()
+-- tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
+-- cancelTween(obj)
 
 local function touchScreen(event)
 
@@ -39,21 +44,6 @@ local function touchScreen(event)
 		end
 	end
 
-end
---------
-local function processScene()
-
-	if gComponents.focus ~= nil then
-		gComponents.focus:process()
-	end
-
-	if gComponents.support ~= nil then
-		local pEnd = #gComponents.support
-
-		for i=1,pEnd,1 do 
-			gComponents.support[i]:process()
-		end
-	end
 end
 --------
 function tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
@@ -69,8 +59,7 @@ function tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
 
 	end
 	--------
-function cancelTween(obj)
-		
+	function cancelTween(obj)
 		if obj.tween ~= nil then
 			transition.cancel(obj.tween)
 			obj.tween = nil
@@ -148,10 +137,18 @@ end
 
 
 --------------------------------------------------------------------------------------
--- INIT scene components
+-- Views
 --------------------------------------------------------------------------------------
 
-local function loadBrand(scene)
+-- loadBrand()
+-- loadBackground()
+-- loadTitle()
+-- loadCard()
+-- loadScroll()
+-- loadAbout()
+-- loadButtons()
+
+local function loadBrand()
 
 	print("adding new brand")
 	require "application.views.brand"
@@ -162,7 +159,7 @@ local function loadBrand(scene)
 
 end
 --------
-local function loadBackground(scene)
+local function loadBackground()
 
 	print("adding background to the animation")
 	require "application.views.background"
@@ -175,7 +172,7 @@ local function loadBackground(scene)
 
 end
 --------
-local function loadTitle(scene)
+local function loadTitle()
 
 	print("adding new brand")
 	require "application.views.title"
@@ -186,7 +183,7 @@ local function loadTitle(scene)
 	
 end
 --------
-local function loadCard(scene)
+local function loadCard()
 
 	print("adding new brand")
 	require "application.views.card"
@@ -197,7 +194,7 @@ local function loadCard(scene)
 	
 end
 --------
-local function loadScroll(scene)
+local function loadScroll()
 
 	print("adding new brand")
 	require "application.views.scroll"
@@ -217,7 +214,7 @@ function loadAbout()
 	gComponents.support[5]:show()
 end
 --------
-local function loadButtons(scene)
+local function loadButtons()
 
 	print("adding button panel")
 	require "application.views.buttonPanel"
@@ -226,6 +223,29 @@ local function loadButtons(scene)
 	gComponents.support[3]:activate()
 	gComponents.support[3]:show()
 	
+end
+
+
+--------------------------------------------------------------------------------------
+-- scene execution
+--------------------------------------------------------------------------------------
+
+-- processScene()
+-- goToScene(scene)
+
+local function processScene()
+
+	if gComponents.focus ~= nil then
+		gComponents.focus:process()
+	end
+
+	if gComponents.support ~= nil then
+		local pEnd = #gComponents.support
+
+		for i=1,pEnd,1 do 
+			gComponents.support[i]:process()
+		end
+	end
 end
 --------
 function goToScene(scene)
@@ -254,9 +274,7 @@ function goToScene(scene)
 
 end
 
---------------------------------------------------------------------------------------
--- scene execution
---------------------------------------------------------------------------------------
+
 
 print("----------------------------------------------------------------------------")
 print("start application")
@@ -266,7 +284,6 @@ Runtime:addEventListener("enterFrame",processScene)
 
 initExternalData()
 goToScene(1)
-
 
 -------------------------------------------------------------------
 local monitorMem = function()
