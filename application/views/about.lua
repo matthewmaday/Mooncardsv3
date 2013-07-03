@@ -197,7 +197,7 @@ function LoadAbout:new(params)
 			tweenObject(screen, screen.x, self.centerX, screen.y, self.centerY, 1, 1)
 			self.images.lightbox.x,self.images.lightbox.y = -(self.myWidth*.5),-(self.myHeight*.5)-40
 
-		elseif system.orientation == "landscapeRight" or system.orientation == "landscapeLeft" then
+		else
 			local xLoc = -(self.centerY) - 38
 
 			tweenObject(screen, screen.x, self.centerY, screen.x, self.centerX, 1, 1)

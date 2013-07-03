@@ -190,18 +190,18 @@ function LoadCard:new(params)
 			-- banner text
 			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
 
-		elseif system.orientation == "landscapeRight" or system.orientation == "landscapeLeft" then
+		else
 
 			-- card
 			pCard.xScale,pCard.yScale = .75,.75
-			tweenObject(screen, screen.x,self.centerY, screen.y, self.centerX,.5, 1)
+			tweenObject(screen, screen.x,self.centerY*.5, screen.y, self.centerX,.5, 1)
 			
 			-- banner
 			tweenObject(pBanner, pBanner.x,0, -220, -150,1, 1)
-			
+
 			-- banner text
 			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
-			
+
 		end
 
 	end
