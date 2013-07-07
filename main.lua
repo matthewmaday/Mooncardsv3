@@ -12,7 +12,7 @@ display.setStatusBar( display.HiddenStatusBar )
 --------------------------------------------------------------------------------------
 local fileio     = require ("library.core.fileio")
 local json       = require "json"
--- local faceBook   = require ("library.core.easyFB")
+local facebook = require( "facebook" )
 
 --------------------------------------------------------------------------------------
 -- variable declaritions
@@ -34,6 +34,80 @@ gOrientation  = nil
 -- processScene()
 -- tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
 -- cancelTween(obj)
+
+-- -- Facebook listener
+-- 	local function facebookListener( event )
+-- 		if "request" == event.type then		
+-- 			local response = json.decode( event.response )
+
+-- 			if response then
+-- 				storyboard.userData.firstName = response.first_name
+-- 				storyboard.userData.lastName = response.last_name
+-- 				storyboard.userData.id = response.id
+-- 			end
+		
+-- 			local function networkListener( event )
+-- 				if event.isError then
+-- 					native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
+-- 				else
+-- 					print( "Profile picture downloaded successfully" )
+-- 				end
+				
+-- 				-- Go to the main screen
+-- 				storyboard.gotoScene( "mainScreen", "crossFade" )
+				
+-- 				-- Show the storyboard navBar group
+-- 				storyboard.navBarGroup.isVisible = true
+-- 			end
+			
+-- 			-- Download the profile picture
+-- 			local path = system.pathForFile( storyboard.userData.firstName .. storyboard.userData.lastName .. storyboard.userData.id .. ".png", system.TemporaryDirectory )
+-- 			local picDownloaded = io.open( path )
+
+-- 			if not picDownloaded then
+-- 				network.download( "http://graph.facebook.com/" .. storyboard.userData.id .. "/picture", "GET", networkListener, storyboard.userData.firstName .. storyboard.userData.lastName .. storyboard.userData.id .. ".png", system.TemporaryDirectory )
+-- 			else
+-- 				-- Go to the main screen
+-- 				storyboard.gotoScene( "mainScreen", "crossFade" )
+				
+-- 				-- Show the storyboard navBar group
+-- 				storyboard.navBarGroup.isVisible = true
+-- 			end
+		
+-- 		-- After a successful login event, send the FB command
+-- 		-- Note: If the app is already logged in, we will still get a "login" phase
+-- 	    elseif "session" == event.type then
+-- 	        -- event.phase is one of: "login", "loginFailed", "loginCancelled", "logout"
+				
+-- 			if event.phase ~= "login" then
+-- 				-- Exit if login error
+-- 				return
+-- 			end
+			
+-- 			-- Request the current logged in user's info
+-- 			if fbCommand == GET_USER_INFO then
+-- 				facebook.request( "me" )
+-- 			end
+-- 	    end
+	
+-- 		return true
+-- 	end
+	
+	
+-- 	-- Login function
+-- 	local function loginUser( event )
+-- 		-- call the login method of the FB session object, passing in a handler
+-- 		-- to be called upon successful login.
+-- 		fbCommand = GET_USER_INFO
+-- 		facebook.login( appId, facebookListener, { "publish_stream" } )
+-- 	end
+
+-- function initFacebook()
+-- 	local appId = "162620770581111"
+-- 	local fbCommand = nil
+-- 	local GET_USER_INFO = "getInfo"
+-- 	local POST_MSG = "post"
+
 
 local function touchScreen(event)
 
@@ -84,8 +158,6 @@ function cancelTween(obj)
 --------
 
 local function onOrientationChange( event )
-
-
 
 	if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
 			gOrientation = "portrait"

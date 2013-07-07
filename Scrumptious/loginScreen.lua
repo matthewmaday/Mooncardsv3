@@ -41,7 +41,7 @@ local scene = storyboard.newScene()
 function scene:createScene( event )
 	local group = self.view
 	
-	local appId = "235285269832478"
+	local appId = "162620770581111"
 	local fbCommand = nil
 	local GET_USER_INFO = "getInfo"
 	

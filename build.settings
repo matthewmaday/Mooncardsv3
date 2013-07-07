@@ -13,12 +13,17 @@ settings = {
                 },
         	
 	},
-	
-	iphone = {
-		plist = {
-			UIStatusBarHidden = false,
-			UIPrerenderedIcon = true, -- set to false for "shine" overlay
-			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
+	android =
+	{
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+		},
+	},
+	iphone =
+	{
+		plist =
+		{
 			CFBundleIconFile = "Icon.png",
 			CFBundleIconFiles =
 			{
@@ -27,30 +32,18 @@ settings = {
 				"Icon-72.png", 
 				"Icon-72@2x.png", 
 			},
-
-            --[[
-            -- iOS app URL schemes:
-            CFBundleURLTypes =
-            {
-                {
-                    CFBundleURLSchemes =
-                    {
-                        "fb477845172282261", -- example scheme for facebook
-                        "coronasdkapp", -- example second scheme
-                    }
-                }
-            }
-            --]]
+			UIApplicationExitsOnSuspend = false,	-- must be false for single sign-on to work
+			FacebookAppID = "162620770581111",
+			CFBundleURLTypes =
+			{
+				{
+					CFBundleURLSchemes =
+					{
+						"fb162620770581111",	-- replace XXXXXXXXX with your facebook appId
+					}
+				}
+			}
 		}
-	},
-	
-	--[[
-	-- Android permissions
-
-	androidPermissions = {
-  		"android.permission.INTERNET",
-  	},
-
-	]]--
+	}
 }
 
