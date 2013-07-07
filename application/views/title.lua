@@ -27,7 +27,7 @@ function LoadTitle:new(params)
 
 		if screen == nil then return -1 end
 		if screen.state ~= "idle" then return -1 end
-
+		
 	 	local delta = event.delta
 
 		if screen.rotation == 0 and delta < 0 then
@@ -238,11 +238,11 @@ function LoadTitle:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
+		if gOrientation == "portrait" or gOrientation == "portraitUpsideDown" then
 			transition.to( self.images.title, { y=30, time=400, delay=0,transition=easing.outQuad})
 			transition.to( self.images.continue, { y=self.myHeight-30, time=400, delay=0,transition=easing.outQuad})
 			transition.to( self.images.sun, { y=self.centerY,  time=400, delay=0,transition=easing.outQuad})
-		else
+		elseif gOrientation == "landscapeRight" or gOrientation == "landscapeLeft" then
 			transition.to( self.images.title, { y=30, time=400, delay=0,transition=easing.outQuad})
 			transition.to( self.images.continue, { y=display.contentHeight-30, time=400, delay=0,transition=easing.outQuad})
 			transition.to( self.images.sun, { y=self.centerX,  time=400, delay=0,transition=easing.outQuad})

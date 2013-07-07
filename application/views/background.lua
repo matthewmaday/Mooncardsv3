@@ -25,6 +25,8 @@ function LoadBackground:new(params)
 
 	local function onOrientationChange( event )
 
+		pOrientationText.text = gOrientation
+
 		if screen == nil then return -1 end
 		if screen.state ~= "idle" then return -1 end
 
@@ -162,11 +164,15 @@ function LoadBackground:new(params)
 
 	end
 
+	pOrientationText = display.newText("TEXT", 0, 0, native.systemFont, 16)
+	pOrientationText.x = 200
 	Runtime:addEventListener( "orientation", onOrientationChange )
 
 	screen:initialize(params)
 	return screen
 
 end
+
+
 
 return LoadBackground

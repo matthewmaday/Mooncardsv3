@@ -173,10 +173,10 @@ function LoadButtons:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
+		if gOrientation == "portrait" or gOrientation == "portraitUpsideDown" then
 			screen.rotation = 0
 			tweenObject(screen, self.centerX-screen.width*.5, self.centerX-screen.width*.5, self.myHeight-screen.height+40, self.myHeight-screen.height, 1, 1)
-		else
+		elseif gOrientation == "landscapeRight" or gOrientation == "landscapeLeft" then
 			screen.rotation = -90
 			tweenObject(screen, self.myHeight, self.myHeight-screen.height, self.centerX+screen.width*.5, self.centerX+screen.width*.5, 1, 1)
 		end

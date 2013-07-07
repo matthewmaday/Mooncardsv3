@@ -12,6 +12,8 @@ display.setStatusBar( display.HiddenStatusBar )
 --------------------------------------------------------------------------------------
 local fileio     = require ("library.core.fileio")
 local json       = require "json"
+-- local faceBook   = require ("library.core.easyFB")
+
 --------------------------------------------------------------------------------------
 -- variable declaritions
 --------------------------------------------------------------------------------------
@@ -22,6 +24,7 @@ gRecords      = nil
 gScreenText   = nil
 gPrefs        = nil
 gBio          = nil
+gOrientation  = nil
 
 --------------------------------------------------------------------------------------
 -- UI functions
@@ -29,6 +32,8 @@ gBio          = nil
 
 -- touchScreen(event)
 -- processScene()
+-- tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
+-- cancelTween(obj)
 
 local function touchScreen(event)
 
@@ -76,6 +81,20 @@ function cancelTween(obj)
 			obj.tween = nil
 		end
 	end
+--------
+
+local function onOrientationChange( event )
+
+
+
+	if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+			gOrientation = "portrait"
+	elseif system.orientation == "landscapeRight" or system.orientation == "landscapeLeft" then
+			gOrientation = "landscapeRight"
+	end
+
+	if gOrientation == nil then gOrientation = "portrait" end
+end
 
 
 --------------------------------------------------------------------------------------
@@ -148,10 +167,18 @@ end
 
 
 --------------------------------------------------------------------------------------
--- INIT scene components
+-- Views
 --------------------------------------------------------------------------------------
 
-local function loadBrand(scene)
+-- loadBrand()
+-- loadBackground()
+-- loadTitle()
+-- loadCard()
+-- loadScroll()
+-- loadAbout()
+-- loadButtons()
+
+local function loadBrand()
 
 	print("adding new brand")
 	require "application.views.brand"
@@ -162,7 +189,7 @@ local function loadBrand(scene)
 
 end
 --------
-local function loadBackground(scene)
+local function loadBackground()
 
 	print("adding background to the animation")
 	require "application.views.background"
@@ -175,7 +202,7 @@ local function loadBackground(scene)
 
 end
 --------
-local function loadTitle(scene)
+local function loadTitle()
 
 	print("adding new brand")
 	require "application.views.title"
@@ -186,7 +213,7 @@ local function loadTitle(scene)
 	
 end
 --------
-local function loadCard(scene)
+local function loadCard()
 
 	print("adding new brand")
 	require "application.views.card"
@@ -197,7 +224,7 @@ local function loadCard(scene)
 	
 end
 --------
-local function loadScroll(scene)
+local function loadScroll()
 
 	print("adding new brand")
 	require "application.views.scroll"
@@ -217,7 +244,7 @@ function loadAbout()
 	gComponents.support[5]:show()
 end
 --------
-local function loadButtons(scene)
+local function loadButtons()
 
 	print("adding button panel")
 	require "application.views.buttonPanel"
@@ -227,7 +254,12 @@ local function loadButtons(scene)
 	gComponents.support[3]:show()
 	
 end
---------
+
+
+--------------------------------------------------------------------------------------
+-- scene execution
+--------------------------------------------------------------------------------------
+
 function goToScene(scene)
 
 	-- if a scene is already active, kill it
@@ -263,6 +295,7 @@ print("start application")
 print("----------------------------------------------------------------------------")
 Runtime:addEventListener("touch",touchScreen)
 Runtime:addEventListener("enterFrame",processScene)
+Runtime:addEventListener( "orientation", onOrientationChange )
 
 initExternalData()
 goToScene(1)

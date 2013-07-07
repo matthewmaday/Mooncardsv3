@@ -168,7 +168,7 @@ function LoadScroll:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
+		if gOrientation == "portrait" or gOrientation == "portraitUpsideDown" then
 
 			self.xScale,self.yScale = 1.0,1.0
 
@@ -177,37 +177,17 @@ function LoadScroll:new(params)
 			
 			tweenObject(screen, screen.x,locX, locY-40,locY,.5, 1)
 
-		else
+		elseif gOrientation == "landscapeRight" or gOrientation == "landscapeLeft" then
 
 			self.xScale,self.yScale = .75,.75
 
-			local locX = self.centerY*.6 - screen.textContent.width*.5
+			local locX = self.centerY*1.1 - screen.textContent.width*.5
 			local locY = self.centerX - (321*.25) -- THE 321 is 75% of height of the card. OOP executes differently and I just added it manually
 			
 			tweenObject(screen, screen.x,locX, locY-40,locY,.5, 1)
 		end
 
 	end
-	--------
-	-- function screen:tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
-
-	-- 	obj.x,obj.y,obj.alpha = startX,startY, startAlpha
-
-	-- 	screen:cancelTween(obj)
-
-	-- 	obj.tween = transition.to(obj, {time=600,x=endX, y=endY,alpha=endAlpha,transition=easing.outQuad,onComplete=function()
-	-- 		screen:cancelTween(obj)
-	-- 		end
-	-- 		})
-
-	-- end
-	-- --------
-	-- function screen:cancelTween(obj)
-	-- 	if obj.tween ~= nil then
-	-- 		transition.cancel(obj.tween)
-	-- 		obj.tween = nil
-	-- 	end
-	-- end
 
 
 	Runtime:addEventListener( "orientation", onOrientationChange )

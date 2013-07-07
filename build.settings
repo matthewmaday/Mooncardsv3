@@ -35,7 +35,7 @@ settings = {
                 {
                     CFBundleURLSchemes =
                     {
-                        "fb162620770581111", -- example scheme for facebook
+                        "fb477845172282261", -- example scheme for facebook
                         "coronasdkapp", -- example second scheme
                     }
                 }

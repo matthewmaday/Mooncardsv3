@@ -87,12 +87,6 @@ function LoadCard:new(params)
 		self.images.bannerBkg.x, self.images.bannerBkg.y = 0,-150
 		self.texts.banner.x, self.texts.banner.y = 0,-155
 
--- self.texts[#self.texts+1] = {test=nil}
--- self.texts.test = display.newText( self.groups.card, system.orientation,  self.groups.card.width*.5, -20, "Papyrus", 16 )
--- self.groups.card:insert(self.texts.test)
--- self.texts.test.x, self.texts.test.y = 0,-100
--- self.texts.test:setTextColor(0,0,0) 
-
 
 		screen:alignContent()
 		
@@ -176,9 +170,9 @@ function LoadCard:new(params)
 		local cardHeight = self.images.cardBkg.height
 		local cardWidth  = self.images.cardBkg.width
 
-		-- screen.texts.test.text = system.orientation
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
+
+		if gOrientation == "portrait" or gOrientation == "portraitUpsideDown" then
 
 			-- card
 			pCard.xScale,pCard.yScale = 1.0,1.0
@@ -190,11 +184,11 @@ function LoadCard:new(params)
 			-- banner text
 			tweenObject(pBannerTxt,pBannerTxt.x,0, -225, -155,1, 1)
 
-		else
+		elseif gOrientation == "landscapeRight" or gOrientation == "landscapeLeft" then
 
 			-- card
 			pCard.xScale,pCard.yScale = .75,.75
-			tweenObject(screen, screen.x,self.centerY*.5, screen.y, self.centerX,.5, 1)
+			tweenObject(screen, screen.x,self.centerY, screen.y, self.centerX,.5, 1)
 			
 			-- banner
 			tweenObject(pBanner, pBanner.x,0, -220, -150,1, 1)

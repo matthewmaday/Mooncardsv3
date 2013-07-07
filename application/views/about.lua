@@ -192,12 +192,12 @@ function LoadAbout:new(params)
 	--------
 	function screen:alignContent()
 
-		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" or system.orientation == "faceUp" then
+		if gOrientation == "portrait" or gOrientation == "portraitUpsideDown" then
 
 			tweenObject(screen, screen.x, self.centerX, screen.y, self.centerY, 1, 1)
 			self.images.lightbox.x,self.images.lightbox.y = -(self.myWidth*.5),-(self.myHeight*.5)-40
 
-		else
+		elseif gOrientation == "landscapeRight" or gOrientation == "landscapeLeft" then
 			local xLoc = -(self.centerY) - 38
 
 			tweenObject(screen, screen.x, self.centerY, screen.x, self.centerX, 1, 1)
