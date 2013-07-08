@@ -215,6 +215,7 @@ function LoadButtons:new(params)
 					gComponents.support[5]:transitionAwayFrom()
 				end
 				
+				postMessage( event )
 				screen:buttonPress(self.images.share)
 			end
 

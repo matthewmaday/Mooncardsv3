@@ -12,7 +12,7 @@ display.setStatusBar( display.HiddenStatusBar )
 --------------------------------------------------------------------------------------
 local fileio     = require ("library.core.fileio")
 local json       = require "json"
-local facebook = require( "facebook" )
+local facebook   = require( "facebook" )
 
 --------------------------------------------------------------------------------------
 -- variable declaritions
@@ -26,6 +26,11 @@ gPrefs        = nil
 gBio          = nil
 gOrientation  = nil
 
+local appId = "162620770581111"
+local fbCommand = nil
+local GET_USER_INFO = "getInfo"
+local POST_MSG = "post"
+
 --------------------------------------------------------------------------------------
 -- UI functions
 --------------------------------------------------------------------------------------
@@ -36,77 +41,98 @@ gOrientation  = nil
 -- cancelTween(obj)
 
 -- -- Facebook listener
--- 	local function facebookListener( event )
--- 		if "request" == event.type then		
--- 			local response = json.decode( event.response )
+	local function facebookListener( event )
+		if "request" == event.type then		
+			local response = json.decode( event.response )
 
--- 			if response then
--- 				storyboard.userData.firstName = response.first_name
--- 				storyboard.userData.lastName = response.last_name
--- 				storyboard.userData.id = response.id
--- 			end
+			-- if response then
+			-- 	storyboard.userData.firstName = response.first_name
+			-- 	storyboard.userData.lastName = response.last_name
+			-- 	storyboard.userData.id = response.id
+			-- end
 		
--- 			local function networkListener( event )
--- 				if event.isError then
--- 					native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
--- 				else
--- 					print( "Profile picture downloaded successfully" )
--- 				end
+			local function networkListener( event )
+				if event.isError then
+					native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
+				else
+					print( "Profile picture downloaded successfully" )
+				end
 				
--- 				-- Go to the main screen
--- 				storyboard.gotoScene( "mainScreen", "crossFade" )
+				-- -- Go to the main screen
+				-- storyboard.gotoScene( "mainScreen", "crossFade" )
 				
--- 				-- Show the storyboard navBar group
--- 				storyboard.navBarGroup.isVisible = true
--- 			end
+				-- -- Show the storyboard navBar group
+				-- storyboard.navBarGroup.isVisible = true
+			end
 			
--- 			-- Download the profile picture
--- 			local path = system.pathForFile( storyboard.userData.firstName .. storyboard.userData.lastName .. storyboard.userData.id .. ".png", system.TemporaryDirectory )
--- 			local picDownloaded = io.open( path )
+			-- Download the profile picture
+			-- local path = system.pathForFile( storyboard.userData.firstName .. storyboard.userData.lastName .. storyboard.userData.id .. ".png", system.TemporaryDirectory )
+			-- local picDownloaded = io.open( path )
 
--- 			if not picDownloaded then
--- 				network.download( "http://graph.facebook.com/" .. storyboard.userData.id .. "/picture", "GET", networkListener, storyboard.userData.firstName .. storyboard.userData.lastName .. storyboard.userData.id .. ".png", system.TemporaryDirectory )
--- 			else
--- 				-- Go to the main screen
--- 				storyboard.gotoScene( "mainScreen", "crossFade" )
+			-- if not picDownloaded then
+			-- 	network.download( "http://graph.facebook.com/" .. storyboard.userData.id .. "/picture", "GET", networkListener, storyboard.userData.firstName .. storyboard.userData.lastName .. storyboard.userData.id .. ".png", system.TemporaryDirectory )
+			-- else
+			-- 	-- Go to the main screen
+			-- 	storyboard.gotoScene( "mainScreen", "crossFade" )
 				
--- 				-- Show the storyboard navBar group
--- 				storyboard.navBarGroup.isVisible = true
--- 			end
+			-- 	-- Show the storyboard navBar group
+			-- 	storyboard.navBarGroup.isVisible = true
+			-- end
 		
--- 		-- After a successful login event, send the FB command
--- 		-- Note: If the app is already logged in, we will still get a "login" phase
--- 	    elseif "session" == event.type then
--- 	        -- event.phase is one of: "login", "loginFailed", "loginCancelled", "logout"
+		-- After a successful login event, send the FB command
+		-- Note: If the app is already logged in, we will still get a "login" phase
+	    elseif "session" == event.type then
+	        -- event.phase is one of: "login", "loginFailed", "loginCancelled", "logout"
 				
--- 			if event.phase ~= "login" then
--- 				-- Exit if login error
--- 				return
--- 			end
+			if event.phase ~= "login" then
+				
+				-- Exit if login error
+				return
+			end
 			
--- 			-- Request the current logged in user's info
--- 			if fbCommand == GET_USER_INFO then
--- 				facebook.request( "me" )
--- 			end
--- 	    end
+						-- This code posts a message to your Facebook Wall
+			if fbCommand == POST_MSG then
+				-- Handle errors
+				
+				
+				-- Set the with friends string accordingly
+				
+				
+				-- Set the message
+				local postMsg = 
+				{
+					message = gRecords.text,
+				}
+		
+				-- Post the message
+				facebook.request( "me/feed", "POST", postMsg )
+
+				native.showAlert( "Facebook Message", "Message posted successfully", { "OK" } )
+
+			end
+	    end
 	
--- 		return true
--- 	end
+
+		return true
+	end
 	
 	
 -- 	-- Login function
--- 	local function loginUser( event )
--- 		-- call the login method of the FB session object, passing in a handler
--- 		-- to be called upon successful login.
--- 		fbCommand = GET_USER_INFO
--- 		facebook.login( appId, facebookListener, { "publish_stream" } )
--- 	end
-
+	local function loginUser( event )
+		-- call the login method of the FB session object, passing in a handler
+		-- to be called upon successful login.
+		fbCommand = GET_USER_INFO
+		facebook.login( appId, facebookListener, { "publish_stream" } )
+	end
+	-- Announce!
+	function postMessage( event )
+		--native.showAlert( "Post function called", "Post function called", { "OK" } )
+		--print("fPOS FUNCTION CALLED_____________________________________________________________________")
+		fbCommand = POST_MSG
+		facebook.login( appId, facebookListener, { "publish_stream" } )
+	end
 -- function initFacebook()
--- 	local appId = "162620770581111"
--- 	local fbCommand = nil
--- 	local GET_USER_INFO = "getInfo"
--- 	local POST_MSG = "post"
+
 
 
 local function touchScreen(event)
@@ -369,6 +395,7 @@ Runtime:addEventListener("touch",touchScreen)
 Runtime:addEventListener("enterFrame",processScene)
 Runtime:addEventListener( "orientation", onOrientationChange )
 
+-- loginUser( event )
 initExternalData()
 goToScene(1)
 
