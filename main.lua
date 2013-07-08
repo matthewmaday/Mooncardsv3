@@ -185,6 +185,7 @@ function cancelTween(obj)
 
 local function onOrientationChange( event )
 
+-- native.showAlert( "Status Update", "Orientation Change", { "OK" } )
 	if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
 			gOrientation = "portrait"
 	elseif system.orientation == "landscapeRight" or system.orientation == "landscapeLeft" then
@@ -396,6 +397,7 @@ Runtime:addEventListener("enterFrame",processScene)
 Runtime:addEventListener( "orientation", onOrientationChange )
 
 -- loginUser( event )
+onOrientationChange( event )
 initExternalData()
 goToScene(1)
 

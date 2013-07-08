@@ -46,6 +46,7 @@ function LoadAbout:new(params)
 			if event.phase == "began" then
 				system.openURL("www.evergreentherapies.com")
 			end
+			return true
 		end
 	end
 	--------
