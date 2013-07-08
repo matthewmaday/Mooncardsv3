@@ -33,13 +33,13 @@ settings = {
 				"Icon-72@2x.png", 
 			},
 			UIApplicationExitsOnSuspend = false,	-- must be false for single sign-on to work
-			FacebookAppID = "162620770581111",
+			FacebookAppID = "546384715396788",
 			CFBundleURLTypes =
 			{
 				{
 					CFBundleURLSchemes =
 					{
-						"fb162620770581111",	-- replace XXXXXXXXX with your facebook appId
+						"fb546384715396788",	-- replace XXXXXXXXX with your facebook appId
 					}
 				}
 			}

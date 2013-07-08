@@ -61,7 +61,7 @@ function LoadBrand:new(params)
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
 
 		-- create a blank background - important for orientation and predictable image placement
-		self.images[#self.images+1] = {blackRect=nil}
+		--self.images[#self.images+1] = {blackRect=nil}
 		self.images.blackRect = display.newRect(screen, 0,0,self.myWidth,self.myHeight)
 		self.images.blackRect:setReferencePoint( display.TopLeftReferencePoint )
 		self.images.blackRect.x,self.images.blackRect.y     = 0,0
@@ -70,7 +70,7 @@ function LoadBrand:new(params)
 		self:insert(self.images.blackRect)
 
 		-- background rect that fades in
-		self.images[#self.images+1] = {background=nil}
+		--self.images[#self.images+1] = {background=nil}
 		self.images.background = display.newRect(screen, 0,0,self.myWidth*2,self.centerY)
 		self.images.background:setReferencePoint( display.TopLeftReferencePoint )
 		self.images.background.x,self.images.background.y     = 0,0
@@ -82,7 +82,7 @@ function LoadBrand:new(params)
 		transition.to( self.images.background, { time=4000, delay=0, alpha=1.0} )
 
 		-- burst image
-		self.images[#self.images+1] = {burst=nil}
+		--self.images[#self.images+1] = {burst=nil}
 		self.images.burst = display.newImageRect("content/images/logo_burst.png", 698, 373) 
 		self.images.burst.x, self.images.burst.y, self.images.burst.alpha = self.centerX, self.centerY-200, 0
 		self.images.burst:setReferencePoint(display.BottomCenterReferencePoint)
@@ -91,7 +91,7 @@ function LoadBrand:new(params)
 		transition.to( self.images.burst, { time=2000, delay=2000, alpha=.5, } )
 
 		-- logo image
-		self.images[#self.images+1] = {logo=nil}
+		--self.images[#self.images+1] = {logo=nil}
 		self.images.logo = display.newImageRect("content/images/logo.png", 132, 125) 
 		self.images.logo.x, self.images.logo.y, self.images.logo.alpha = self.centerY+30, self.centerY-60, 1
 		self.images.logo:setReferencePoint(display.BottomCenterReferencePoint)
@@ -100,7 +100,7 @@ function LoadBrand:new(params)
 		transition.to( self.images.logo, { x= self.centerY,time=7000, delay=0, alpha=1.0, transition=easing.outQuad} )
 
 		-- -- title image
-		self.images[#self.images+1] = {title=nil}
+		--self.images[#self.images+1] = {title=nil}
 		self.images.title = display.newImageRect("content/images/logo_title.png", 202, 10) 
 		self.images.title.x, self.images.title.y, self.images.title.alpha = self.centerX, self.centerY+25, 0
 		self.images.title:setReferencePoint(display.TopCenterReferencePoint)
@@ -109,7 +109,7 @@ function LoadBrand:new(params)
 		transition.to( self.images.title, { y= self.centerY+15,time=1000, delay=2000, alpha=1.0, transition=easing.inQuad} )
 
 		-- -- star image
-		self.images[#self.images+1] = {star=nil}
+		--self.images[#self.images+1] = {star=nil}
 		self.images.star = display.newImageRect("content/images/logo_star.png", 14, 12) 
 		self.images.star.x, self.images.star.y, self.images.star.alpha = self.centerX, self.centerY, 0
 		self.images.star:setReferencePoint(display.TopCenterReferencePoint)
@@ -175,21 +175,28 @@ function LoadBrand:new(params)
 	--------
 	function screen:destory()
 
-		local pEnd = #self.images
+		-- local pEnd = #self.images
 		
-		self.images.blackRect:removeSelf() 
-		self.images.background:removeSelf()
-		self.images.burst:removeSelf()
-		self.images.logo:removeSelf()
-		self.images.title:removeSelf()
-		self.images.star:removeSelf()
+		for k,v in pairs(self.images) do
+			print(type(self.images[k]))
+			v:removeSelf()
+		end
 
-		self.images.blackRect = nil
-		self.images.background = nil
-		self.images.burst = nil
-		self.images.logo = nil
-		self.images.title = nil
-		self.images.star = nil
+		self.images = nil
+
+		-- self.images.blackRect:removeSelf() 
+		-- self.images.background:removeSelf()
+		-- self.images.burst:removeSelf()
+		-- self.images.logo:removeSelf()
+		-- self.images.title:removeSelf()
+		-- self.images.star:removeSelf()
+
+		-- self.images.blackRect = nil
+		-- self.images.background = nil
+		-- self.images.burst = nil
+		-- self.images.logo = nil
+		-- self.images.title = nil
+		-- self.images.star = nil
 
 		screen:removeSelf()
 		screen = nil

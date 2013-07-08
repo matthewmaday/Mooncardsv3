@@ -215,7 +215,7 @@ function LoadTitle:new(params)
 		
 		if #screen.stars < 40 then
 			
-			print("added star number", #screen.stars+1)
+			--print("added star number", #screen.stars+1)
 
 			screen.timer = timer.performWithDelay( 200, screen.addStar, 1 )
 

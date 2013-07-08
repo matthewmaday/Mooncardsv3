@@ -170,6 +170,7 @@ function LoadAbout:new(params)
 		screen:removeSelf()
 		screen = nil
 		gComponents.support[5] = nil
+		
 	end
 	--------
 	function screen:transitionAwayFrom()

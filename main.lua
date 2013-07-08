@@ -26,7 +26,7 @@ gPrefs        = nil
 gBio          = nil
 gOrientation  = nil
 
-local appId = "162620770581111"
+local appId = "546384715396788"
 local fbCommand = nil
 local GET_USER_INFO = "getInfo"
 local POST_MSG = "post"
@@ -412,7 +412,7 @@ local monitorMem = function()
     print( "TexMem:   " .. textMem )
 end
 
- -- Runtime:addEventListener( "enterFrame", monitorMem )
+-- Runtime:addEventListener( "enterFrame", monitorMem )
 
 return screen
 
