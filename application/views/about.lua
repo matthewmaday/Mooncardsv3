@@ -16,13 +16,22 @@ function LoadAbout:new(params)
 	local screen   = display.newGroup()
 	
 	------------------------------------------------------------------------------------------
-	-- Primary Views
+	-- Unique Functions to this view
 	------------------------------------------------------------------------------------------
 
-	-- initialize()
-	-- show()
-	-- hide()
+	-- gowebsite(event)
+	-- onOrientationChange( event )
 
+	local function gowebsite(event)
+
+		if event.target == screen.texts.web then
+			if event.phase == "began" then
+				system.openURL("www.evergreentherapies.com")
+			end
+			return true -- prevents a click through
+		end
+	end
+	--------
 	local function onOrientationChange( event )
 
 		if screen == nil then return -1 end
@@ -39,24 +48,26 @@ function LoadAbout:new(params)
 		screen:alignContent()
 
 	end
-	--------
-	local function gowebsite(event)
 
-		if event.target == screen.texts.web then
-			if event.phase == "began" then
-				system.openURL("www.evergreentherapies.com")
-			end
-			return true
-		end
-	end
-	--------
+	------------------------------------------------------------------------------------------
+	-- Common Functions for all views
+	------------------------------------------------------------------------------------------
+
+	-- initialize(params, event)
+	-- show(time)
+	-- hide(time)
+	-- activate()
+	-- process()
+	-- pause()
+	-- transitionAwayFrom()
+	-- destory()
+	-- timeout()
+	-- alignContent()
+
 	function screen:initialize(params, event)
 
-		self.images       = {}
-		self.texts		  = {} 			
-		self.groups       = {}
-		self.timer        = nil
-		self.tween        = nil
+		self.images, self.texts, self.groups = {},{},{}
+ 			
 		self.myWidth	  = display.viewableContentWidth
 		self.myHeight     = display.viewableContentHeight
 
@@ -69,12 +80,10 @@ function LoadAbout:new(params)
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
 
 		-- create the card display group
-		self.groups[#self.groups+1] = {aboutCard=nil}
 		self.groups.aboutCard = display.newGroup()
 		screen:insert(self.groups.aboutCard)
 
 		-- create black background
-		self.images[#self.images+1] = {lightbox=nil}
 		self.images.lightbox = display.newRect(screen, 0,0,self.myHeight,self.myHeight)
 		self.images.lightbox:setReferencePoint( display.TopLeftReferencePoint )
 		self.images.lightbox.x,self.images.lightbox.y,self.images.lightbox.alpha = -(self.myWidth*.5),-(self.myHeight*.5),.5
@@ -88,20 +97,15 @@ function LoadAbout:new(params)
 		)
 
 	  	-- Insert the card background
-	  	self.images[#self.images+1] = {background=nil}
 		self.images.background = display.newImageRect(self.groups.aboutCard, "content/images/popup.png", 299, 191)
 		screen:insert( self.images.background )
 
-
-
 		 -- popup text
-		self.texts[#self.texts+1] = {bio=nil}
 		self.texts.bio = display.newText( screen, gBio.bio, 0,  0, 240,200,"Papyrus", 11 )
 		self.texts.bio:setTextColor(70, 70, 70)
 		screen:insert( self.texts.bio )
 
 		 -- web address text
-		self.texts[#self.texts+1] = {web=nil}
 		self.texts.web = display.newText( screen, gBio.website, 0,  0, 240,30,"Papyrus", 14 )
 		self.texts.web:setTextColor(196, 94, 51)
 		screen:insert( self.texts.web )
@@ -151,35 +155,13 @@ function LoadAbout:new(params)
 
 	end	
 	--------
-	function screen:destory()
-
-		local pEnd = #self.images
-		
-		self.groups.aboutCard:removeSelf()
-		self.texts.bio:removeSelf()
-		self.texts.web:removeSelf()
-		self.images.lightbox:removeSelf()
-		self.images.background:removeSelf()
-
-		self.groups.aboutCard = nil
-		self.texts.bio = nil
-		self.texts.web = nil
-		self.images.lightbox  = nil
-		self.images.background = nil
-
-		screen:removeSelf()
-		screen = nil
-		gComponents.support[5] = nil
-		
-	end
-	--------
 	function screen:transitionAwayFrom()
 
 		if self.state ~= "idle" then return -1 end
 
 		self.state = "paused"
 		Runtime:removeEventListener( "orientation", onOrientationChange )
-		
+		Runtime:removeEventListener("touch", gowebsite)
 
 		transition.to( screen, { time=400, delay=0,alpha=0,transition=easing.outQuad, onComplete = function()
 			screen:destory()
@@ -188,10 +170,17 @@ function LoadAbout:new(params)
 
 	end	
 	--------
+	function screen:destory()
+
+		destroyView(screen)
+		gComponents.support[5] = nil
+		
+	end
+	--------
 	function screen:timeout()
 		-- not used in this scene
 	end
-	--------
+	---------
 	function screen:alignContent()
 
 		if gOrientation == "portrait" or gOrientation == "portraitUpsideDown" then

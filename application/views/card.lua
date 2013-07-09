@@ -7,21 +7,16 @@
 
 LoadCard = {}
 
---------------------------------------------------------------------------------------
--- External Libraries
---------------------------------------------------------------------------------------
-
 function LoadCard:new(params)
 
 	local screen   = display.newGroup()
 	
 	------------------------------------------------------------------------------------------
-	-- Primary Views
+	-- Unique Functions to this view
 	------------------------------------------------------------------------------------------
 
-	-- initialize()
-	-- show()
-	-- hide()
+	-- onOrientationChange( event )
+	-- refreshCard()
 
 	local function onOrientationChange( event )
 
@@ -41,11 +36,38 @@ function LoadCard:new(params)
 
 	end
 	--------
+	function screen:refreshCard()
+
+		selectRecord()
+
+		self.texts.banner.text = gRecord.title
+		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
+
+		gComponents.support[4]:updateText()
+
+		screen.y = screen.y - 50
+		screen:alignContent()
+	end
+	
+	------------------------------------------------------------------------------------------
+	-- Common Functions for all views
+	------------------------------------------------------------------------------------------
+
+	-- initialize(params, event)
+	-- show(time)
+	-- hide(time)
+	-- activate()
+	-- process()
+	-- pause()
+	-- transitionAwayFrom()
+	-- destory()
+	-- timeout()
+	-- alignContent()
+
 	function screen:initialize(params, event)
 
-		self.images       = {}
-		self.texts		  = {} 			
-		self.groups       = {}
+		self.images, self.texts, self.groups = {},{},{}
+
 		self.timer        = nil
 		self.tween        = nil
 		self.myWidth	  = display.viewableContentWidth
@@ -59,25 +81,19 @@ function LoadCard:new(params)
 
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
 
-		-- insert so that we have accurate screen width and height measurements
-
 		-- create the card display group
-		self.groups[#self.groups+1] = {card=nil}
 		self.groups.card = display.newGroup()
 		screen:insert(self.groups.card)
 
 	  	-- Insert the card background
-	  	self.images[#self.images+1] = {cardBkg=nil}
 		self.images.cardBkg = display.newImageRect(self.groups.card, "content/images/card_card.png", 320, 428)
 		self.groups.card:insert( self.images.cardBkg )
 
 		-- banner
-		self.images[#self.images+1] = {bannerBkg=nil}
 		self.images.bannerBkg = display.newImageRect("content/images/card_banner.png", 340, 82) 
 		self.groups.card:insert(self.images.bannerBkg)
 
 		-- banner text
-		self.texts[#self.texts+1] = {banner=nil}
 		self.texts.banner = display.newText( self.groups.card, gRecord.title,  self.groups.card.width*.5, -20, "Papyrus", 16 )
 		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
 		self.groups.card:insert(self.texts.banner)
@@ -126,21 +142,6 @@ function LoadCard:new(params)
 
 	end	
 	--------
-	function screen:destory()
-
-		local pEnd = #self.images
-		
-		screen.groups.card:removeSelf()
-		screen.images.cardBkg:removeSelf()
-
-		screen.texts.body = nil
-		screen.groups.card = nil
-		screen.images.cardBkg = nil
-
-		screen:removeSelf()
-		screen = nil
-	end
-	--------
 	function screen:transitionAwayFrom()
 
 		if self.state ~= "idle" then return -1 end
@@ -157,6 +158,10 @@ function LoadCard:new(params)
 		goToScene(4)
 
 	end	
+	--------
+	function screen:destory()
+		destroyView(screen)
+	end
 	--------
 	function screen:timeout()
 		-- not used in this scene
@@ -198,19 +203,6 @@ function LoadCard:new(params)
 
 		end
 
-	end
-	--------
-	function screen:refreshCard()
-
-		selectRecord()
-
-		self.texts.banner.text = gRecord.title
-		self.texts.banner:setReferencePoint(display.CenterReferencePoint)
-
-		gComponents.support[4]:updateText()
-
-		screen.y = screen.y - 50
-		screen:alignContent()
 	end
 
 

@@ -133,35 +133,56 @@ local POST_MSG = "post"
 	end
 -- function initFacebook()
 
+----------------------------------------------------------------------------------------------------------------------
+-- Local Utility Functions
+----------------------------------------------------------------------------------------------------------------------
 
+	-- monitorMem()
+	-- touchScreen(event)
+	-- onOrientationChange( event )
 
-local function touchScreen(event)
+	local function monitorMem()
 
-	if event.phase == "began" then 
+	    collectgarbage()
+	    print( "MemUsage: " .. collectgarbage("count") )
 
-		if gComponents.focus ~= nil then
-			gComponents.focus:transitionAwayFrom() 
+	    local textMem = system.getInfo( "textureMemoryUsed" ) / 1000000
+	    print( "TexMem:   " .. textMem )
+	end
+	--------
+	local function touchScreen(event)
+
+		if event.phase == "began" then 
+
+			if gComponents.focus ~= nil then
+				gComponents.focus:transitionAwayFrom() 
+			end
 		end
+
 	end
+	--------
+	local function onOrientationChange( event )
 
-end
---------
-local function processScene()
-
-	if gComponents.focus ~= nil then
-		gComponents.focus:process()
-	end
-
-	if gComponents.support ~= nil then
-		local pEnd = #gComponents.support
-
-		for i=1,pEnd,1 do 
-			gComponents.support[i]:process()
+	-- native.showAlert( "Status Update", "Orientation Change", { "OK" } )
+		if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
+				gOrientation = "portrait"
+		elseif system.orientation == "landscapeRight" or system.orientation == "landscapeLeft" then
+				gOrientation = "landscapeRight"
 		end
+
+		if gOrientation == nil then gOrientation = "portrait" end
 	end
-end
---------
-function tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
+
+
+----------------------------------------------------------------------------------------------------------------------
+-- Shared Functions
+----------------------------------------------------------------------------------------------------------------------
+
+	-- tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
+	-- cancelTween(obj)
+	-- destroyView(obj)
+
+	function tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
 
 		obj.x,obj.y,obj.alpha = startX,startY, startAlpha
 
@@ -174,26 +195,53 @@ function tweenObject(obj, startX, endX, startY, endY, startAlpha, endAlpha)
 
 	end
 	--------
-function cancelTween(obj)
+	function cancelTween(obj)
 		
 		if obj.tween ~= nil then
 			transition.cancel(obj.tween)
 			obj.tween = nil
 		end
 	end
---------
+	--------
+	function destroyView(obj)
 
-local function onOrientationChange( event )
+		monitorMem()
+		-- remove images
+		if obj.images ~= nil then
+			print("remove images")
+			for k,v in pairs(obj.images) do
+				v:removeSelf()
+				v = nil
+			end
+			obj.images = nil
+		end
 
--- native.showAlert( "Status Update", "Orientation Change", { "OK" } )
-	if system.orientation == "portrait" or system.orientation == "portraitUpsideDown" then
-			gOrientation = "portrait"
-	elseif system.orientation == "landscapeRight" or system.orientation == "landscapeLeft" then
-			gOrientation = "landscapeRight"
+		-- remove text fields "texts" ;-) 
+		if obj.texts ~= nil then
+			print("remove texts")
+			for k,v in pairs(obj.texts) do
+				v:removeSelf()
+				v = nil
+			end
+			obj.texts = nil
+		end
+
+		-- remove groups
+		if obj.groups ~= nil then
+			print("remove groups") 
+			for k,v in pairs(obj.groups) do
+				v:removeSelf()
+				v = nil
+			end
+			obj.texts = groups
+		end
+
+		obj:removeSelf()
+		obj = nil
+
+		monitorMem()
+
 	end
-
-	if gOrientation == nil then gOrientation = "portrait" end
-end
 
 
 --------------------------------------------------------------------------------------
@@ -277,9 +325,9 @@ end
 -- loadAbout()
 -- loadButtons()
 
+
 local function loadBrand()
 
-	print("adding new brand")
 	require "application.views.brand"
 
 	gComponents.focus = LoadBrand:new(nil)
@@ -290,7 +338,6 @@ end
 --------
 local function loadBackground()
 
-	print("adding background to the animation")
 	require "application.views.background"
 
 	gComponents.support = {}
@@ -303,7 +350,6 @@ end
 --------
 local function loadTitle()
 
-	print("adding new brand")
 	require "application.views.title"
 
 	gComponents.focus = LoadTitle:new(nil)
@@ -314,7 +360,6 @@ end
 --------
 local function loadCard()
 
-	print("adding new brand")
 	require "application.views.card"
 
 	gComponents.support[2] = LoadCard:new(nil)
@@ -325,7 +370,6 @@ end
 --------
 local function loadScroll()
 
-	print("adding new brand")
 	require "application.views.scroll"
 
 	gComponents.support[4] = LoadScroll:new(nil)
@@ -338,6 +382,7 @@ function loadAbout()
 
 	require "application.views.about"
 
+	print(gComponents.support[5])
 	gComponents.support[5] = LoadAbout:new(nil)
 	gComponents.support[5]:activate()
 	gComponents.support[5]:show()
@@ -345,7 +390,6 @@ end
 --------
 local function loadButtons()
 
-	print("adding button panel")
 	require "application.views.buttonPanel"
 
 	gComponents.support[3] = LoadButtons:new(nil)
@@ -359,31 +403,46 @@ end
 -- scene execution
 --------------------------------------------------------------------------------------
 
-function goToScene(scene)
+	local function processScene()
 
-	-- if a scene is already active, kill it
-	if gComponents.focus ~= nil then
+		if gComponents.focus ~= nil then
+			gComponents.focus:process()
+		end
 
-		gComponents.focus:transitionAwayFrom()
-		gComponents.legacy = gComponents.focus
-		gComponents.focus = nil
+		if gComponents.support ~= nil then
+			local pEnd = #gComponents.support
+
+			for i=1,pEnd,1 do 
+				gComponents.support[i]:process()
+			end
+		end
+	end
+	--------
+	function goToScene(scene)
+
+		-- if a scene is already active, kill it
+		if gComponents.focus ~= nil then
+
+			gComponents.focus:transitionAwayFrom()
+			gComponents.legacy = gComponents.focus
+			gComponents.focus = nil
+
+		end
+
+		-- load a new scene
+
+		if scene == 1 then
+			loadBrand()
+		elseif scene == 2 then
+			loadBackground()
+			loadTitle()
+		elseif scene == 3 then
+			loadCard()
+			loadScroll()
+			loadButtons()
+		end
 
 	end
-
-	-- load a new scene
-
-	if scene == 1 then
-		loadBrand()
-	elseif scene == 2 then
-		loadBackground()
-		loadTitle()
-	elseif scene == 3 then
-		loadCard()
-		loadScroll()
-		loadButtons()
-	end
-
-end
 
 --------------------------------------------------------------------------------------
 -- scene execution
@@ -400,19 +459,6 @@ Runtime:addEventListener( "orientation", onOrientationChange )
 onOrientationChange( event )
 initExternalData()
 goToScene(1)
-
-
--------------------------------------------------------------------
-local monitorMem = function()
-
-    collectgarbage()
-    print( "MemUsage: " .. collectgarbage("count") )
-
-    local textMem = system.getInfo( "textureMemoryUsed" ) / 1000000
-    print( "TexMem:   " .. textMem )
-end
-
--- Runtime:addEventListener( "enterFrame", monitorMem )
 
 return screen
 

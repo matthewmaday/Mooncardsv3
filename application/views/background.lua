@@ -7,21 +7,15 @@
 
 LoadBackground = {}
 
---------------------------------------------------------------------------------------
--- External Libraries
---------------------------------------------------------------------------------------
-
 function LoadBackground:new(params)
 
 	local screen   = display.newGroup()
 	
 	------------------------------------------------------------------------------------------
-	-- Primary Views
+	-- Unique Functions to this view
 	------------------------------------------------------------------------------------------
 
-	-- initialize()
-	-- show()
-	-- hide()
+	-- onOrientationChange( event )
 
 	local function onOrientationChange( event )
 
@@ -41,12 +35,26 @@ function LoadBackground:new(params)
 		screen:alignContent()
 
 	end
-	--------
+	
+	------------------------------------------------------------------------------------------
+	-- Common Functions for all views
+	------------------------------------------------------------------------------------------
+
+	-- initialize(params, event)
+	-- show(time)
+	-- hide(time)
+	-- activate()
+	-- process()
+	-- pause()
+	-- transitionAwayFrom()
+	-- destory()
+	-- timeout()
+	-- alignContent()
+
 	function screen:initialize(params, event)
 
-		self.images       = {}
-		self.listeners    = {}
-		self.timer        = nil
+		self.images, self.texts, self.groups = {},{},{}
+
 		self.myWidth	  = display.contentHeight
 		self.myHeight     = display.contentWidth
 		self.starSpeed    = 2
@@ -61,7 +69,6 @@ function LoadBackground:new(params)
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
 
 		-- blue image at the bottom of the screen
-		self.images[#self.images+1] = {blackRect=nil}
 		self.images.blackRect = display.newRect(screen, 0,0,self.myWidth*1.5,self.myHeight)
 		self.images.blackRect:setReferencePoint( display.TopLeftReferencePoint )
 		self.images.blackRect.x,self.images.blackRect.y = 0,self.centerY
@@ -69,7 +76,6 @@ function LoadBackground:new(params)
 		self:insert(self.images.blackRect)
 
 		-- burst animation
-		self.images[#self.images+1] = {burst=nil}
 		self.images.burst = display.newImageRect("content/images/home_burst.png", 800, 800) 
 		self.images.burst.x, self.images.burst.y, self.images.burst.alpha = self.centerX, self.centerY, 1
 		self.images.burst:setReferencePoint(display.CenterReferencePoint)
@@ -119,20 +125,6 @@ function LoadBackground:new(params)
 
 	end	
 	--------
-	function screen:destory()
-
-		local pEnd = #self.images
-		
-		self.images.blackRect:removeSelf() 
-		self.images.burst:removeSelf()
-
-		self.images.blackRect = nil
-		self.images.burst = nil
-
-		screen:removeSelf()
-		screen = nil
-	end
-	--------
 	function screen:transitionAwayFrom()
 
 		if self.state ~= "idle" then return -1 end
@@ -140,7 +132,6 @@ function LoadBackground:new(params)
 		self.state = "paused"
 		Runtime:removeEventListener( "orientation", onOrientationChange )
 		
-
 		transition.to( screen, { time=400, delay=0,alpha=0,transition=easing.outQuad, onComplete = function()
 			screen:destory()
 		end
@@ -149,6 +140,11 @@ function LoadBackground:new(params)
 		goToScene(2)
 
 	end	
+	--------
+	function screen:destory()
+		destroyView(screen)
+	end
+
 	--------
 	function screen:timeout()
 		-- not used in this scene
@@ -159,7 +155,6 @@ function LoadBackground:new(params)
 		transition.to( screen, { x=(display.contentWidth-self.myWidth)*.5,y=(display.contentHeight-self.myHeight)*.5, 
 		 time=400, delay=0,transition=easing.outQuad})
 
-
 	end
 	
 	Runtime:addEventListener( "orientation", onOrientationChange )
@@ -168,7 +163,5 @@ function LoadBackground:new(params)
 	return screen
 
 end
-
-
 
 return LoadBackground

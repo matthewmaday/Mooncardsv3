@@ -12,17 +12,16 @@ LoadScroll = {}
 --------------------------------------------------------------------------------------
 local widget       = require "widget"
 
+
 function LoadScroll:new(params)
 
 	local screen   = display.newGroup()
 	
 	------------------------------------------------------------------------------------------
-	-- Primary Views
+	-- Unique Functions to this view
 	------------------------------------------------------------------------------------------
 
-	-- initialize()
-	-- show()
-	-- hide()
+	-- onOrientationChange( event )
 
 	local function onOrientationChange( event )
 
@@ -41,12 +40,26 @@ function LoadScroll:new(params)
 		screen:alignContent()
 
 	end
-	--------
+	
+	------------------------------------------------------------------------------------------
+	-- Common Functions for all views
+	------------------------------------------------------------------------------------------
+
+	-- initialize(params, event)
+	-- show(time)
+	-- hide(time)
+	-- activate()
+	-- process()
+	-- pause()
+	-- transitionAwayFrom()
+	-- destory()
+	-- timeout()
+	-- alignContent()
+
 	function screen:initialize(params, event)
 
-		self.images       = {}
-		self.texts		  = {} 			
-		self.groups       = {}
+		self.images, self.texts, self.groups = {},{},{}
+
 		self.timer        = nil
 		self.tween        = nil
 		self.myWidth	  = display.viewableContentWidth
@@ -59,7 +72,6 @@ function LoadScroll:new(params)
 		end
 
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
-		self.groups[#self.groups+1] = {body=nil}
 		
 		screen:updateText()
 		
@@ -69,10 +81,10 @@ function LoadScroll:new(params)
 	function screen:updateText()
 
 		-- remove old instance of the text (fixes formatting issues)
-		if screen.textContent ~= nil then
-			screen.textContent:removeSelf()
+		if self.texts.textContent ~= nil then
+			self.texts.textContent:removeSelf()
 			self.groups.body:removeSelf()
-			screen.textContent = nil
+			self.texts.textContent = nil
 			self.groups.body = nil
 		end
 
@@ -82,13 +94,13 @@ function LoadScroll:new(params)
 
 		self:insert( self.groups.body )
 
-		screen.textContent = display.newText( gRecord.text, 0, 0, 200, 0, "Papyrus", 16)
-		screen.textContent:setTextColor(0,0,0) 
+		self.texts.textContent = display.newText( gRecord.text, 0, 0, 200, 0, "Papyrus", 16)
+		self.texts.textContent:setTextColor(0,0,0) 
 		
-		screen.x, screen.y = gComponents.support[2].x - screen.textContent.width*.5, 
+		screen.x, screen.y = gComponents.support[2].x - self.texts.textContent.width*.5, 
 		gComponents.support[2].y-(gComponents.support[2].height*.25)
 		
-		self.groups.body :insert( self.textContent )
+		self.groups.body :insert( self.texts.textContent )
 
 		-- insert the mask that sits over the text within the card
 		local mask = graphics.newMask( "content/images/mask.png" )
@@ -132,21 +144,6 @@ function LoadScroll:new(params)
 
 	end	
 	--------
-	function screen:destory()
-
-		local pEnd = #self.images
-
-		self.groups.body:removeSelf()
-		self.textContent:removeSelf()
-
-		self.groups.body = nil
-		self.textContent = nil
-		widget = nil
-
-		screen:removeSelf()
-		screen = nil
-	end
-	--------
 	function screen:transitionAwayFrom()
 
 		if self.state ~= "idle" then return -1 end
@@ -162,6 +159,11 @@ function LoadScroll:new(params)
 
 	end	
 	--------
+	function screen:destory()
+		widget = nil
+		destroyView(screen)
+	end
+	--------
 	function screen:timeout()
 		-- not used in this scene
 	end
@@ -172,7 +174,7 @@ function LoadScroll:new(params)
 
 			self.xScale,self.yScale = 1.0,1.0
 
-			local locX = self.centerX - screen.textContent.width*.5
+			local locX = self.centerX - self.texts.textContent.width*.5
 			local locY = self.centerY-(428*.3)
 			
 			tweenObject(screen, screen.x,locX, locY-40,locY,.5, 1)
@@ -181,14 +183,13 @@ function LoadScroll:new(params)
 
 			self.xScale,self.yScale = .75,.75
 
-			local locX = self.centerY*1.1 - screen.textContent.width*.5
+			local locX = self.centerY*1.1 - self.texts.textContent.width*.5
 			local locY = self.centerX - (321*.25) -- THE 321 is 75% of height of the card. OOP executes differently and I just added it manually
 			
 			tweenObject(screen, screen.x,locX, locY-40,locY,.5, 1)
 		end
 
 	end
-
 
 	Runtime:addEventListener( "orientation", onOrientationChange )
 

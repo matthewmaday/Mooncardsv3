@@ -7,21 +7,16 @@
 
 LoadTitle = {}
 
---------------------------------------------------------------------------------------
--- External Libraries
---------------------------------------------------------------------------------------
-
 function LoadTitle:new(params)
 
 	local screen   = display.newGroup()
 	
 	------------------------------------------------------------------------------------------
-	-- Primary Views
+	-- Unique Functions to this view
 	------------------------------------------------------------------------------------------
 
-	-- initialize()
-	-- show()
-	-- hide()
+	-- onOrientationChange( event )
+	-- addStar()
 
 	local function onOrientationChange( event )
 
@@ -43,10 +38,48 @@ function LoadTitle:new(params)
 
 	end
 	--------
+	function screen:addStar()
+		
+		if #screen.stars < 40 then
+
+			screen.timer = timer.performWithDelay( 200, screen.addStar, 1 )
+
+			local t = #screen.stars+1
+			screen.stars[t] = display.newImageRect("content/images/home_star.png", 5, 5) 
+			screen.stars[t].x, screen.stars[t].y, screen.stars[t].alpha = screen.centerX, screen.centerY, 0
+			screen.stars[t].rotation    = (math.random(1,2)*2)-3
+
+			local degrees = math.random(360)
+			local radius  = 1+math.random(3)
+			local rads    = degrees * (math.pi / 180.0)
+
+			screen.stars[t].xSpeed, screen.stars[t].ySpeed = radius/2 * math.cos(rads), radius/2 * math.sin(rads)
+			screen.stars[t]:setReferencePoint(display.CenterReferencePoint)
+			screen:insert(screen.stars[t])
+
+		end
+
+	end
+	
+	------------------------------------------------------------------------------------------
+	-- Common Functions for all views
+	------------------------------------------------------------------------------------------
+
+	-- initialize(params, event)
+	-- show(time)
+	-- hide(time)
+	-- activate()
+	-- process()
+	-- pause()
+	-- transitionAwayFrom()
+	-- destory()
+	-- timeout()
+	-- alignContent()
+
 	function screen:initialize(params, event)
 
-		self.images       = {}
-		self.listeners    = {}
+		self.images, self.texts, self.groups = {},{},{}
+
 		self.timer        = nil
 		self.myWidth	  = display.contentHeight
 		self.myHeight     = display.contentWidth
@@ -60,12 +93,9 @@ function LoadTitle:new(params)
 			self.myHeight = tmp
 		end
 
-		print("width and height",self.myWidth,self.myHeight)
-
 		self.centerX, self.centerY = self.myWidth*.5, self.myHeight*.5
 
 		-- center moon
-		self.images[#self.images+1] = {sun=nil}
 		self.images.sun = display.newImageRect("content/images/home_sunmoon.png", 104, 107) 
 		self.images.sun.x, self.images.sun.y, self.images.sun.alpha = self.centerX, self.centerY, 0
 		self.images.sun:setReferencePoint(display.CenterReferencePoint)
@@ -74,7 +104,6 @@ function LoadTitle:new(params)
 		transition.to( self.images.sun, { time=2000, delay=100, alpha=1.0} )
 
    		-- title
-		self.images[#self.images+1] = {title=nil}
 		self.images.title = display.newImageRect("content/images/home_title.png", 289, 49) 
 		self.images.title.x, self.images.title.y, self.images.title.alpha = self.centerX, self.myHeight*.1, 0
 		self.images.title:setReferencePoint(display.CenterReferencePoint)
@@ -83,7 +112,6 @@ function LoadTitle:new(params)
 		transition.to( self.images.title, { time=2000, delay=0, alpha=1.0} )
 
 		-- continue button
-		self.images[#self.images+1] = {continue=nil}
 		self.images.continue = display.newImageRect("content/images/home_begin.png", 104, 37) 
 		self.images.continue.x, self.images.continue.y, self.images.continue.alpha = self.centerX, self.myHeight*.9, 0
 		self.images.continue:setReferencePoint(display.CenterReferencePoint)
@@ -169,28 +197,6 @@ function LoadTitle:new(params)
 
 	end	
 	--------
-	function screen:destory()
-
-		local pEnd = #self.images
-		
-		self.images.sun:removeSelf()
-		self.images.title:removeSelf()
-		self.images.continue:removeSelf()
-
-		self.images.sun      = nil
-		self.images.title    = nil
-		self.images.continue = nil
-
-		local pEnd = #screen.stars
-		for i=1,pEnd,1 do
-			screen.stars[i]:removeSelf()
-			screen.stars[i] = nil
-		end
-		
-		screen:removeSelf()
-		screen = nil
-	end
-	--------
 	function screen:transitionAwayFrom()
 
 		if self.state ~= "idle" then return -1 end
@@ -211,28 +217,16 @@ function LoadTitle:new(params)
 
 	end	
 	--------
-	function screen:addStar()
-		
-		if #screen.stars < 40 then
-			
-			--print("added star number", #screen.stars+1)
+	function screen:destory()
 
-			screen.timer = timer.performWithDelay( 200, screen.addStar, 1 )
-
-			local t = #screen.stars+1
-			screen.stars[t] = display.newImageRect("content/images/home_star.png", 5, 5) 
-			screen.stars[t].x, screen.stars[t].y, screen.stars[t].alpha = screen.centerX, screen.centerY, 0
-			screen.stars[t].rotation    = (math.random(1,2)*2)-3
-
-			local degrees = math.random(360)
-			local radius  = 1+math.random(3)
-			local rads    = degrees * (math.pi / 180.0)
-
-			screen.stars[t].xSpeed, screen.stars[t].ySpeed = radius/2 * math.cos(rads), radius/2 * math.sin(rads)
-			screen.stars[t]:setReferencePoint(display.CenterReferencePoint)
-			screen:insert(screen.stars[t])
-
+		-- remove stars
+		local pEnd = #screen.stars
+		for i=1,pEnd,1 do
+			screen.stars[i]:removeSelf()
+			screen.stars[i] = nil
 		end
+		
+		destroyView(screen)
 
 	end
 	--------
